@@ -1,5 +1,7 @@
 {
-  "used_topics": [],
+  "used_topics": [
+    "how fifa corruption actually works"
+  ],
   "published": [
     {
       "asset": "20260605-100246-doc.mp4",
@@ -16,6 +18,38 @@
       "title": "FIFA's Dark Web #shorts",
       "topic": "How FIFA Corruption Actually Works",
       "published_at": "2026-06-05T10:11:35.298624+00:00"
+    },
+    {
+      "asset": "20260605-105902-doc.mp4",
+      "kind": "doc",
+      "video_id": "DRYRUN-20260605-105902-doc",
+      "title": "FIFA's $25 Billion Scandal",
+      "topic": "How FIFA Corruption Actually Works",
+      "published_at": "2026-06-05T11:09:03.886412+00:00"
+    },
+    {
+      "asset": "20260605-105902-short0.mp4",
+      "kind": "short",
+      "video_id": "DRYRUN-20260605-105902-short0",
+      "title": "FIFA's $5 Billion Scandal #shorts",
+      "topic": "How FIFA Corruption Actually Works",
+      "published_at": "2026-06-05T11:09:04.292195+00:00"
+    },
+    {
+      "asset": "20260605-105902-short1.mp4",
+      "kind": "short",
+      "video_id": "DRYRUN-20260605-105902-short1",
+      "title": "15 Bribes That Brought Down FIFA #shorts",
+      "topic": "How FIFA Corruption Actually Works",
+      "published_at": "2026-06-05T11:09:04.740348+00:00"
+    },
+    {
+      "asset": "20260605-105902-short2.mp4",
+      "kind": "short",
+      "video_id": "DRYRUN-20260605-105902-short2",
+      "title": "85% of FIFA Bribes Go Unpunished #shorts",
+      "topic": "How FIFA Corruption Actually Works",
+      "published_at": "2026-06-05T11:09:05.459572+00:00"
     }
   ]
 }
