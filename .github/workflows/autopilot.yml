@@ -1,0 +1,54 @@
+name: Football Shorts Autopilot
+
+# Fully autonomous: one full cycle (1 doc + ~4 shorts) per fire.
+# Daily during the pre-tournament ramp; bump frequency during June-July 2026.
+on:
+  schedule:
+    - cron: "0 6 * * *"   # 11:30 IST daily
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Render without uploading (no quota burn)"
+        type: boolean
+        default: true
+
+jobs:
+  autopilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install ffmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Install Doppler CLI
+        run: curl -Ls https://cli.doppler.com/install.sh | sudo sh
+
+      - name: Run one cycle
+        env:
+          DOPPLER_TOKEN: ${{ secrets.DOPPLER_TOKEN }}
+          # Workflow-dispatch can force dry-run; scheduled runs upload for real.
+          FORCE_DRY: ${{ github.event.inputs.dry_run }}
+        run: |
+          if [ "$FORCE_DRY" = "true" ]; then export YT_DRY_RUN=1; fi
+          doppler run -- python pipeline.py --now
+
+      - name: Persist state + metrics (topics never repeat; dashboard reads runs/)
+        if: always()   # still publish metrics even if the run errored
+        run: |
+          git config user.name "autopilot-bot"
+          git config user.email "autopilot@users.noreply.github.com"
+          git add -f state.json runs/latest.json runs/history.jsonl || true
+          git commit -m "chore: update state + metrics [skip ci]" || echo "no changes"
+          git push || echo "nothing to push"

@@ -1,0 +1,11 @@
+.env
+cache/
+output/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.session
+state.json
+client_secret*.json
+.yt_oauth.json
+*.log

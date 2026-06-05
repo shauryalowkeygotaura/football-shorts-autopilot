@@ -1,0 +1,7 @@
+setup:
+  # NOTE: reuses the youtube-title-autoresearch Doppler project because the
+  # account is at the 10-project cap (same pattern as jio-outbound sharing
+  # dental-receptionist). GROQ_API_KEY + YT_DRY_RUN live there; YT OAuth keys
+  # (YT_CLIENT_ID/SECRET/REFRESH_TOKEN) get added there once generated.
+  project: youtube-title-autoresearch
+  config: dev
