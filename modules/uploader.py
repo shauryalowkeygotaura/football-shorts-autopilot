@@ -25,6 +25,19 @@ _TOKEN_URI = "https://oauth2.googleapis.com/token"
 _SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
 
 
+def is_dry() -> bool:
+    """Dry when YT_DRY_RUN=1, or when the OAuth creds are absent: a scheduled
+    run without creds must degrade to render-only, never crash the cycle."""
+    if os.environ.get("YT_DRY_RUN", "").strip() == "1":
+        return True
+    if not all(os.environ.get(k, "").strip()
+               for k in ("YT_CLIENT_ID", "YT_CLIENT_SECRET", "YT_REFRESH_TOKEN")):
+        print("[uploader] YT OAuth creds missing; forcing dry run (no quota burn)",
+              file=sys.stderr)
+        return True
+    return False
+
+
 def _service():
     from google.oauth2.credentials import Credentials
     from googleapiclient.discovery import build
@@ -45,7 +58,7 @@ def upload(video_path: str | Path, title: str, description: str,
            tags: list[str], privacy: str | None = None) -> str:
     """Upload one video. Returns the YouTube video id (or 'DRYRUN-...')."""
     video_path = Path(video_path)
-    if os.environ.get("YT_DRY_RUN", "").strip() == "1":
+    if is_dry():
         print(f"[DRY RUN] would upload {video_path.name}: {title!r} "
               f"({len(tags)} tags, privacy={privacy or config.YT_PRIVACY})")
         return f"DRYRUN-{video_path.stem}"
@@ -76,7 +89,7 @@ def set_thumbnail(video_id: str, thumb_path: str | Path) -> bool:
     and non-fatal: a thumbnail failure (e.g. channel not phone-verified) must
     never sink the run. Returns True on success."""
     thumb_path = Path(thumb_path)
-    if os.environ.get("YT_DRY_RUN", "").strip() == "1":
+    if is_dry():
         print(f"[DRY RUN] would set thumbnail {thumb_path.name} on {video_id}")
         return True
     if not thumb_path.exists():

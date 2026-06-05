@@ -90,7 +90,7 @@ def run_cycle(shorts_only: bool = False, doc_only: bool = False) -> dict:
     # Tell the Command Center dashboard what happened this cycle.
     n_shorts = sum(1 for k, _, _ in published if k == "short")
     n_doc = sum(1 for k, _, _ in published if k == "doc")
-    dry = os.environ.get("YT_DRY_RUN", "").strip() == "1"
+    dry = uploader.is_dry()  # also true when YT OAuth creds are absent
     run_metrics.write(
         mode="doc-only" if doc_only else ("shorts-only" if shorts_only else "cycle"),
         status="ok" if published else "degraded",
