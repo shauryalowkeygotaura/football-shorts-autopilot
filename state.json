@@ -1,6 +1,7 @@
 {
   "used_topics": [
-    "how fifa corruption actually works"
+    "how fifa corruption actually works",
+    "the fifa scandal explained"
   ],
   "published": [
     {
@@ -50,6 +51,30 @@
       "title": "85% of FIFA Bribes Go Unpunished #shorts",
       "topic": "How FIFA Corruption Actually Works",
       "published_at": "2026-06-05T11:09:05.459572+00:00"
+    },
+    {
+      "asset": "20260606-062626-doc.mp4",
+      "kind": "doc",
+      "video_id": "DRYRUN-20260606-062626-doc",
+      "title": "FIFA Scandal Explained",
+      "topic": "The FIFA scandal, explained",
+      "published_at": "2026-06-06T06:35:30.409707+00:00"
+    },
+    {
+      "asset": "20260606-062626-short0.mp4",
+      "kind": "short",
+      "video_id": "DRYRUN-20260606-062626-short0",
+      "title": "FIFA Scandal Explained #shorts",
+      "topic": "The FIFA scandal, explained",
+      "published_at": "2026-06-06T06:35:30.948050+00:00"
+    },
+    {
+      "asset": "20260606-062626-short1.mp4",
+      "kind": "short",
+      "video_id": "DRYRUN-20260606-062626-short1",
+      "title": "FIFA's Dark Past #shorts",
+      "topic": "The FIFA scandal, explained",
+      "published_at": "2026-06-06T06:35:31.457399+00:00"
     }
   ]
 }

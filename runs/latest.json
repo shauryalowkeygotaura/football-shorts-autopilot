@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-05T11:09:05Z",
+  "ts": "2026-06-06T06:35:31Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] How FIFA Corruption Actually Works -> 1 doc + 3 shorts",
+  "summary": "[dry] The FIFA scandal, explained -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "How FIFA Corruption Actually Works",
-    "beats": 10,
-    "shorts": 3,
+    "topic": "The FIFA scandal, explained",
+    "beats": 9,
+    "shorts": 2,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 168.9
+    "doc_seconds": 173.4
   },
   "budgets": {
     "youtube": {
