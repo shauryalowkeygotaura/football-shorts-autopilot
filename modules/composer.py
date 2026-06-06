@@ -14,7 +14,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 import config  # noqa: E402
-from modules import tts, visuals  # noqa: E402
+from modules import broll, tts, visuals  # noqa: E402
 from modules.scriptwriter import Script  # noqa: E402
 
 
@@ -70,10 +70,18 @@ def build_doc(script: Script, work_dir: Path) -> DocResult:
                         config.VOICE_RATE, slug=f"beat{i}")
         dur = max(a.duration_sec, 1.0)
 
-        still = visuals.fetch_still(beat.visual, work_dir / "img" / f"beat{i}.jpg",
-                                    size, subject=script.title_working)
-        clip = visuals.ken_burns_clip(still, work_dir / f"clip{i}.mp4", dur, size,
-                                      zoom_in=(i % 2 == 0))
+        still, found = visuals.fetch_still(beat.visual, work_dir / "img" / f"beat{i}.jpg",
+                                           size, subject=script.title_working)
+        clip = None
+        if not found:
+            # Commons whiffed: try generic stock b-roll (Pexels) before
+            # accepting the blank gradient card. Dry-safe: returns None when
+            # PEXELS_API_KEY is unset.
+            clip = broll.fetch_clip(beat.visual, work_dir / f"clip{i}.mp4", dur,
+                                    size, beat_index=i)
+        if clip is None:
+            clip = visuals.ken_burns_clip(still, work_dir / f"clip{i}.mp4", dur, size,
+                                          zoom_in=(i % 2 == 0))
         muxed = work_dir / f"beat{i}.mp4"
         _mux_beat(clip, a.audio_path, muxed)
         beat_parts.append(muxed)

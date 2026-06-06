@@ -133,18 +133,22 @@ def _gradient_card(dest: Path, w: int, h: int) -> None:
 
 
 def fetch_still(query: str, dest: Path, size: tuple[int, int],
-                subject: str | None = None) -> Path:
+                subject: str | None = None) -> tuple[Path, bool]:
     """Resolve one beat's visual to a local image file (always returns a path).
 
     `subject` is the doc's topic, used as a final fallback so a beat with an
     unsearchable cue still gets a topic-relevant photo rather than a blank card.
+
+    Returns (path, found): `found` is False when Commons had no usable hit and
+    the still is the gradient placeholder, which lets the composer try a stock
+    b-roll clip before settling for the blank card.
     """
     dest.parent.mkdir(parents=True, exist_ok=True)
     url = _search_commons(query, subject=subject)
     if url and _download(url, dest):
-        return dest
+        return dest, True
     _gradient_card(dest, *size)
-    return dest
+    return dest, False
 
 
 def ken_burns_clip(image: Path, out: Path, duration: float,
