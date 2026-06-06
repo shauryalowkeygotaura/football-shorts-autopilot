@@ -100,33 +100,94 @@ def _strip_fences(text: str) -> str:
     return text.strip()
 
 
+def _repair_json(text: str) -> str:
+    """Trivial repairs for almost-valid model JSON: drop trailing commas before
+    a closing brace/bracket and strip stray control characters. Best-effort only;
+    the retry + deterministic fallback are the real safety net."""
+    text = re.sub(r",\s*([}\]])", r"\1", text)          # trailing commas
+    text = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", "", text)  # control chars
+    return text
+
+
+def _parse_script(raw: str, topic_title: str) -> Script:
+    """Parse model output into a Script, repairing trivially-broken JSON first."""
+    cleaned = _strip_fences(raw)
+    try:
+        data = json.loads(cleaned)
+    except ValueError:
+        data = json.loads(_repair_json(cleaned))   # may still raise -> caller retries
+    raw_beats = data["beats"]
+    if not isinstance(raw_beats, list):
+        raise ValueError("'beats' is not a list")
+    beats: list[Beat] = []
+    for b in raw_beats:
+        if not isinstance(b, dict):
+            continue
+        # Coerce defensively: the model occasionally emits non-string fields
+        # (null, numbers) which would otherwise blow up .strip() with an
+        # AttributeError and escape the retry loop.
+        narration = str(b.get("narration") or "").strip()
+        if not narration:
+            continue
+        visual = str(b.get("visual") or topic_title).strip() or topic_title
+        beats.append(Beat(narration=narration, visual=visual,
+                          shortable=bool(b.get("shortable", False))))
+    if not beats:
+        raise ValueError("model returned no usable beats")
+    return Script(title_working=data.get("title_working", topic_title).strip(),
+                  beats=beats)
+
+
+def _fallback_script(topic_title: str) -> Script:
+    """Deterministic script when Groq can't produce valid JSON. A plain factual
+    narration beats a dead pipeline: it renders, slices, and uploads like any
+    other doc. The visual on every beat is the topic itself, which is a real
+    illustratable entity (topics.py only picks Commons-resolvable subjects)."""
+    hook = (f"What really happened with {topic_title}? "
+            "The story is bigger than the headline, and most fans only know half of it.")
+    body = (f"{topic_title} sits at the crossroads of money, power, and football. "
+            "The facts, laid out in order, tell a story that is stranger than the rumor.")
+    payoff = (f"That is the real story behind {topic_title}: "
+              "follow the money, and the football makes sense.")
+    parts = [(hook, True), (body, True), (payoff, False)]
+    beats = [Beat(narration=n, visual=topic_title, shortable=s) for n, s in parts]
+    return Script(title_working=topic_title, beats=beats)
+
+
 def write_script(topic_title: str) -> Script:
-    """Generate the documentary script for one topic."""
+    """Generate the documentary script for one topic.
+
+    Groq's json_object mode validates AFTER generation and 400s on malformed
+    JSON (json_validate_failed), and the API can also throw transient 429/5xx.
+    Either would kill the whole cycle, so we retry colder each attempt, repair
+    trivially-broken JSON, and finally fall back to a deterministic template.
+    """
+    from groq import GroqError
     client = _client()
     # Variable content goes in the USER message, AFTER the cached system prefix.
     user = f"Write the documentary script for this topic:\n\n{topic_title}"
-    resp = client.chat.completions.create(
-        model=config.GROQ_MODEL,
-        messages=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": user},
-        ],
-        temperature=0.8,
-        max_tokens=2600,
-        response_format={"type": "json_object"},
-    )
-    data = json.loads(_strip_fences(resp.choices[0].message.content))
-    beats = [
-        Beat(
-            narration=b["narration"].strip(),
-            visual=b.get("visual", topic_title).strip(),
-            shortable=bool(b.get("shortable", False)),
-        )
-        for b in data["beats"]
-        if b.get("narration", "").strip()
-    ]
-    return Script(title_working=data.get("title_working", topic_title).strip(),
-                  beats=beats)
+    for attempt, temp in enumerate((0.8, 0.5, 0.2)):
+        try:
+            resp = client.chat.completions.create(
+                model=config.GROQ_MODEL,
+                messages=[
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user", "content": user},
+                ],
+                temperature=temp,
+                max_tokens=2600,
+                response_format={"type": "json_object"},
+            )
+            return _parse_script(resp.choices[0].message.content, topic_title)
+        except (KeyError, IndexError, TypeError, AttributeError, ValueError, GroqError) as e:
+            # ValueError covers json.JSONDecodeError; GroqError covers the
+            # json_validate_failed 400, 429 rate limits, and 5xx/timeouts;
+            # the rest catch malformed-but-200 payloads.
+            print(f"[scriptwriter] attempt {attempt + 1} failed (temp={temp}): {e}",
+                  file=sys.stderr)
+    print("[scriptwriter] all Groq attempts failed; using deterministic fallback script",
+          file=sys.stderr)
+    return _fallback_script(topic_title)
 
 
 if __name__ == "__main__":

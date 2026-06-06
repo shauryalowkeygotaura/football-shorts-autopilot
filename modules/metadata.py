@@ -77,10 +77,10 @@ def make_meta(topic_title: str, kind: str) -> Meta:
             raw = re.sub(r"^```(?:json)?|```$", "", resp.choices[0].message.content.strip()).strip()
             data = json.loads(raw)
             tags = list(dict.fromkeys([*data.get("tags", []), *config.YT_DEFAULT_TAGS]))[:15]
-            return Meta(title=data["title"][:95],
-                        description=data["description"] + _ATTRIB,
-                        tags=tags)
-        except (KeyError, IndexError, TypeError, ValueError, GroqError) as e:
+            title = str(data["title"])[:95]
+            description = str(data["description"])
+            return Meta(title=title, description=description + _ATTRIB, tags=tags)
+        except (KeyError, IndexError, TypeError, AttributeError, ValueError, GroqError) as e:
             # ValueError covers json.JSONDecodeError; GroqError covers the
             # json_validate_failed 400 and other API-side failures.
             print(f"[metadata] attempt {attempt + 1} failed (temp={temp}): {e}", file=sys.stderr)
