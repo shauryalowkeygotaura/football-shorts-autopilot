@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-06T09:00:45Z",
+  "ts": "2026-06-06T09:13:25Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] FIFA Corruption Scandal : Explained Easy -> 1 doc + 4 shorts",
+  "summary": "[dry] FIFA corruption explained - Simplified -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "FIFA Corruption Scandal : Explained Easy",
-    "beats": 10,
-    "shorts": 4,
+    "topic": "FIFA corruption explained - Simplified",
+    "beats": 9,
+    "shorts": 3,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 139.3
+    "doc_seconds": 155.1
   },
   "budgets": {
     "youtube": {
