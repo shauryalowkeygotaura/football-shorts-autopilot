@@ -6,6 +6,7 @@ file alone. Secrets live in Doppler, NOT here.
 """
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 ROOT = Path(__file__).parent.resolve()
@@ -48,7 +49,11 @@ GROQ_MODEL_FAST = "llama-3.1-8b-instant"
 
 # ── YouTube upload ────────────────────────────────────────────────────────────
 YT_CATEGORY_ID = "17"            # Sports
-YT_PRIVACY = "public"
+# YouTube forces API uploads from un-audited API projects to PRIVATE (policy
+# since 2020-07-28), so requesting "public" just earns a "locked private"
+# warning email. Default to private; flip via Doppler (YT_PRIVACY=public)
+# only AFTER the one-time YouTube API compliance audit is approved.
+YT_PRIVACY = os.environ.get("YT_PRIVACY", "").strip() or "private"
 YT_DEFAULT_TAGS = ["FIFA World Cup 2026", "football", "soccer", "world cup"]
 
 # ── Image sourcing (copyright-safe, free) ─────────────────────────────────────
