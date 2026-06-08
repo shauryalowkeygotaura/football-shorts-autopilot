@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-07T08:54:42Z",
+  "ts": "2026-06-08T10:34:08Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] The stolen Jules Rimet trophy heist (1966 + 1983) -> 1 doc + 1 shorts",
+  "summary": "[dry] The biggest match-fixing scandal in World Cup history -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "The stolen Jules Rimet trophy heist (1966 + 1983)",
+    "topic": "The biggest match-fixing scandal in World Cup history",
     "beats": 9,
-    "shorts": 1,
+    "shorts": 2,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 148.2
+    "doc_seconds": 144.8
   },
   "budgets": {
     "youtube": {
