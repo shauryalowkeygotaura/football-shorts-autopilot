@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-08T10:34:08Z",
+  "ts": "2026-06-09T09:40:04Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] The biggest match-fixing scandal in World Cup history -> 1 doc + 2 shorts",
+  "summary": "[dry] Modri\u0107: from a war refugee to a Ballon d'Or -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "The biggest match-fixing scandal in World Cup history",
+    "topic": "Modri\u0107: from a war refugee to a Ballon d'Or",
     "beats": 9,
-    "shorts": 2,
+    "shorts": 3,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 144.8
+    "doc_seconds": 151.8
   },
   "budgets": {
     "youtube": {
