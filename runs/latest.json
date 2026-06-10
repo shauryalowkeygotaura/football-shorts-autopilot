@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-09T09:40:04Z",
+  "ts": "2026-06-10T09:53:14Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] Modri\u0107: from a war refugee to a Ballon d'Or -> 1 doc + 3 shorts",
+  "summary": "[dry] The striker every club rejected before he became a legend -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "Modri\u0107: from a war refugee to a Ballon d'Or",
+    "topic": "The striker every club rejected before he became a legend",
     "beats": 9,
     "shorts": 3,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 151.8
+    "doc_seconds": 138.6
   },
   "budgets": {
     "youtube": {
