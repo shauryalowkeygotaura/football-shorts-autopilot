@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-11T10:23:33Z",
+  "ts": "2026-06-12T10:10:05Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] Untold History of FIFA World Cup Trophy -> 1 doc + 3 shorts",
+  "summary": "[dry] FIFA corruption -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "Untold History of FIFA World Cup Trophy",
+    "topic": "FIFA corruption",
     "beats": 10,
     "shorts": 3,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 160.2
+    "doc_seconds": 153.3
   },
   "budgets": {
     "youtube": {
