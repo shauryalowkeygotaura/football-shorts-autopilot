@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-13T09:02:15Z",
+  "ts": "2026-06-14T09:38:57Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] Croatia: a country of 4 million reaching two finals -> 1 doc + 4 shorts",
+  "summary": "[dry] Ranking every World Cup host by how much money it made -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "Croatia: a country of 4 million reaching two finals",
+    "topic": "Ranking every World Cup host by how much money it made",
     "beats": 10,
     "shorts": 4,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 174.9
+    "doc_seconds": 259.2
   },
   "budgets": {
     "youtube": {
