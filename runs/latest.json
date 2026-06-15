@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-14T09:38:57Z",
+  "ts": "2026-06-15T12:04:09Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] Ranking every World Cup host by how much money it made -> 1 doc + 4 shorts",
+  "summary": "[dry] fifa world cup football : The Untold Story fifa world cup hi -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "Ranking every World Cup host by how much money it made",
-    "beats": 10,
+    "topic": "fifa world cup football : The Untold Story fifa world cup highlights 2026",
+    "beats": 9,
     "shorts": 4,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 259.2
+    "doc_seconds": 231.4
   },
   "budgets": {
     "youtube": {
