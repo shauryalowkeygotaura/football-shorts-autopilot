@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-15T12:04:09Z",
+  "ts": "2026-06-16T11:10:30Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] fifa world cup football : The Untold Story fifa world cup hi -> 1 doc + 4 shorts",
+  "summary": "[dry] FIFA's VAR Scandal Just Rocked the 2026 World Cup -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "fifa world cup football : The Untold Story fifa world cup highlights 2026",
-    "beats": 9,
-    "shorts": 4,
+    "topic": "FIFA's VAR Scandal Just Rocked the 2026 World Cup",
+    "beats": 10,
+    "shorts": 3,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 231.4
+    "doc_seconds": 171.5
   },
   "budgets": {
     "youtube": {
