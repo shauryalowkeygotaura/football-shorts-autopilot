@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-16T11:10:30Z",
+  "ts": "2026-06-17T10:53:51Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] FIFA's VAR Scandal Just Rocked the 2026 World Cup -> 1 doc + 3 shorts",
+  "summary": "[dry] The Biggest Scandal in World Cup History -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "FIFA's VAR Scandal Just Rocked the 2026 World Cup",
-    "beats": 10,
+    "topic": "The Biggest Scandal in World Cup History",
+    "beats": 9,
     "shorts": 3,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 171.5
+    "doc_seconds": 167.0
   },
   "budgets": {
     "youtube": {
