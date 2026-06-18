@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-17T10:53:51Z",
+  "ts": "2026-06-18T10:23:53Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] The Biggest Scandal in World Cup History -> 1 doc + 3 shorts",
+  "summary": "[dry] FIFA's Biggest World Cup Scandal Just EXPLODED -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "The Biggest Scandal in World Cup History",
+    "topic": "FIFA's Biggest World Cup Scandal Just EXPLODED",
     "beats": 9,
     "shorts": 3,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 167.0
+    "doc_seconds": 201.6
   },
   "budgets": {
     "youtube": {
