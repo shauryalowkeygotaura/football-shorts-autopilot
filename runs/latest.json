@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-18T10:23:53Z",
+  "ts": "2026-06-19T10:25:38Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] FIFA's Biggest World Cup Scandal Just EXPLODED -> 1 doc + 3 shorts",
+  "summary": "[dry] How FIFA corrupted the World Cup -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "FIFA's Biggest World Cup Scandal Just EXPLODED",
+    "topic": "How FIFA corrupted the World Cup",
     "beats": 9,
     "shorts": 3,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 201.6
+    "doc_seconds": 152.9
   },
   "budgets": {
     "youtube": {
