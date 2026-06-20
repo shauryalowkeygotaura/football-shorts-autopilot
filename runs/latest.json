@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-19T10:25:38Z",
+  "ts": "2026-06-20T08:56:29Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] How FIFA corrupted the World Cup -> 1 doc + 3 shorts",
+  "summary": "[dry] The Untold Story of the FIFA World Cup (1930\u20132026) -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "How FIFA corrupted the World Cup",
-    "beats": 9,
+    "topic": "The Untold Story of the FIFA World Cup (1930\u20132026)",
+    "beats": 8,
     "shorts": 3,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 152.9
+    "doc_seconds": 195.1
   },
   "budgets": {
     "youtube": {
