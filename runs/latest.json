@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-21T09:49:47Z",
+  "ts": "2026-06-22T11:53:33Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] Guess the Secret World Cup Footballer ft Gerard Piqu\u00e9! -> 1 doc + 2 shorts",
+  "summary": "[dry] FIFA's Ugliest World Cup Scandal Just EXPLODED - Here's Why -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "Guess the Secret World Cup Footballer ft Gerard Piqu\u00e9!",
-    "beats": 10,
-    "shorts": 2,
+    "topic": "FIFA's Ugliest World Cup Scandal Just EXPLODED - Here's Why",
+    "beats": 9,
+    "shorts": 3,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 137.6
+    "doc_seconds": 237.0
   },
   "budgets": {
     "youtube": {
