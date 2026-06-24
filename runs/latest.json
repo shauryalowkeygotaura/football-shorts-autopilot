@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-23T09:37:46Z",
+  "ts": "2026-06-24T09:07:51Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] The Untold Story of the 2026 FIFA World Cup -> 1 doc + 4 shorts",
+  "summary": "[dry] What If an Underdog Won the 2026 FIFA World Cup? -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "The Untold Story of the 2026 FIFA World Cup",
+    "topic": "What If an Underdog Won the 2026 FIFA World Cup?",
     "beats": 10,
-    "shorts": 4,
+    "shorts": 3,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 154.8
+    "doc_seconds": 180.6
   },
   "budgets": {
     "youtube": {
