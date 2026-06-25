@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-24T09:07:51Z",
+  "ts": "2026-06-25T09:02:51Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] What If an Underdog Won the 2026 FIFA World Cup? -> 1 doc + 3 shorts",
+  "summary": "[dry] FIFA and the World Cup: Last Week Tonight with John Oliver ( -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "What If an Underdog Won the 2026 FIFA World Cup?",
+    "topic": "FIFA and the World Cup: Last Week Tonight with John Oliver (HBO)",
     "beats": 10,
     "shorts": 3,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 180.6
+    "doc_seconds": 187.9
   },
   "budgets": {
     "youtube": {

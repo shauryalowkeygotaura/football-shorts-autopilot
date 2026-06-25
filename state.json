@@ -21,7 +21,8 @@
     "guess the secret world cup footballer ft gerard piqu",
     "fifas ugliest world cup scandal just exploded  heres why",
     "the untold story of the 2026 fifa world cup",
-    "what if an underdog won the 2026 fifa world cup"
+    "what if an underdog won the 2026 fifa world cup",
+    "fifa and the world cup last week tonight with john oliver hbo"
   ],
   "published": [
     {
@@ -743,6 +744,38 @@
       "title": "1 in 32 Million #shorts",
       "topic": "What If an Underdog Won the 2026 FIFA World Cup?",
       "published_at": "2026-06-24T09:07:51.945232+00:00"
+    },
+    {
+      "asset": "20260625-085249-doc.mp4",
+      "kind": "doc",
+      "video_id": "DRYRUN-20260625-085249-doc",
+      "title": "John Oliver on FIFA and the World Cup",
+      "topic": "FIFA and the World Cup: Last Week Tonight with John Oliver (HBO)",
+      "published_at": "2026-06-25T09:02:50.308560+00:00"
+    },
+    {
+      "asset": "20260625-085249-short0.mp4",
+      "kind": "short",
+      "video_id": "DRYRUN-20260625-085249-short0",
+      "title": "John Oliver on FIFA and the World Cup #shorts",
+      "topic": "FIFA and the World Cup: Last Week Tonight with John Oliver (HBO)",
+      "published_at": "2026-06-25T09:02:50.659094+00:00"
+    },
+    {
+      "asset": "20260625-085249-short1.mp4",
+      "kind": "short",
+      "video_id": "DRYRUN-20260625-085249-short1",
+      "title": "John Oliver's FIFA Expos\u00e9 #shorts",
+      "topic": "FIFA and the World Cup: Last Week Tonight with John Oliver (HBO)",
+      "published_at": "2026-06-25T09:02:51.102992+00:00"
+    },
+    {
+      "asset": "20260625-085249-short2.mp4",
+      "kind": "short",
+      "video_id": "DRYRUN-20260625-085249-short2",
+      "title": "John Oliver's FIFA Takedown #shorts",
+      "topic": "FIFA and the World Cup: Last Week Tonight with John Oliver (HBO)",
+      "published_at": "2026-06-25T09:02:51.525422+00:00"
     }
   ]
 }
