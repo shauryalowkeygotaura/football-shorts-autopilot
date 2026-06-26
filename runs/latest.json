@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-25T09:02:51Z",
+  "ts": "2026-06-26T09:02:49Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] FIFA and the World Cup: Last Week Tonight with John Oliver ( -> 1 doc + 3 shorts",
+  "summary": "[dry] From Mussolini to Messi: The Dark History of the FIFA World  -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "FIFA and the World Cup: Last Week Tonight with John Oliver (HBO)",
-    "beats": 10,
-    "shorts": 3,
+    "topic": "From Mussolini to Messi: The Dark History of the FIFA World Cup",
+    "beats": 9,
+    "shorts": 2,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 187.9
+    "doc_seconds": 152.3
   },
   "budgets": {
     "youtube": {

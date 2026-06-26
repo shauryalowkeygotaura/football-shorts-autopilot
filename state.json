@@ -22,7 +22,8 @@
     "fifas ugliest world cup scandal just exploded  heres why",
     "the untold story of the 2026 fifa world cup",
     "what if an underdog won the 2026 fifa world cup",
-    "fifa and the world cup last week tonight with john oliver hbo"
+    "fifa and the world cup last week tonight with john oliver hbo",
+    "from mussolini to messi the dark history of the fifa world cup"
   ],
   "published": [
     {
@@ -776,6 +777,30 @@
       "title": "John Oliver's FIFA Takedown #shorts",
       "topic": "FIFA and the World Cup: Last Week Tonight with John Oliver (HBO)",
       "published_at": "2026-06-25T09:02:51.525422+00:00"
+    },
+    {
+      "asset": "20260626-085535-doc.mp4",
+      "kind": "doc",
+      "video_id": "DRYRUN-20260626-085535-doc",
+      "title": "Mussolini to Messi: Dark FIFA World Cup Secret",
+      "topic": "From Mussolini to Messi: The Dark History of the FIFA World Cup",
+      "published_at": "2026-06-26T09:02:48.278870+00:00"
+    },
+    {
+      "asset": "20260626-085535-short0.mp4",
+      "kind": "short",
+      "video_id": "DRYRUN-20260626-085535-short0",
+      "title": "The Dark History of FIFA #shorts",
+      "topic": "From Mussolini to Messi: The Dark History of the FIFA World Cup",
+      "published_at": "2026-06-26T09:02:48.617862+00:00"
+    },
+    {
+      "asset": "20260626-085535-short1.mp4",
+      "kind": "short",
+      "video_id": "DRYRUN-20260626-085535-short1",
+      "title": "Mussolini to Messi #shorts",
+      "topic": "From Mussolini to Messi: The Dark History of the FIFA World Cup",
+      "published_at": "2026-06-26T09:02:49.219164+00:00"
     }
   ]
 }
