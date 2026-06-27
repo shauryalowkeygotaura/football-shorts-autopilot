@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-26T09:02:49Z",
+  "ts": "2026-06-27T08:40:39Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] From Mussolini to Messi: The Dark History of the FIFA World  -> 1 doc + 2 shorts",
+  "summary": "[dry] 10 FIFA World Cup 2026 Controversies EXPLAINED -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "From Mussolini to Messi: The Dark History of the FIFA World Cup",
-    "beats": 9,
-    "shorts": 2,
+    "topic": "10 FIFA World Cup 2026 Controversies EXPLAINED",
+    "beats": 11,
+    "shorts": 4,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 152.3
+    "doc_seconds": 186.7
   },
   "budgets": {
     "youtube": {
