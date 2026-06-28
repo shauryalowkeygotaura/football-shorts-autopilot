@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-27T08:40:39Z",
+  "ts": "2026-06-28T08:52:43Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] 10 FIFA World Cup 2026 Controversies EXPLAINED -> 1 doc + 4 shorts",
+  "summary": "[dry] World Cup Drama: FIFA Faces Backlash Over Uruguay VAR Scanda -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "10 FIFA World Cup 2026 Controversies EXPLAINED",
-    "beats": 11,
-    "shorts": 4,
+    "topic": "World Cup Drama: FIFA Faces Backlash Over Uruguay VAR Scandal",
+    "beats": 9,
+    "shorts": 2,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 186.7
+    "doc_seconds": 172.7
   },
   "budgets": {
     "youtube": {
