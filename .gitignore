@@ -6,6 +6,7 @@ __pycache__/
 .pytest_cache/
 *.session
 state.json
+live_state.json
 client_secret*.json
 .yt_oauth.json
 *.log

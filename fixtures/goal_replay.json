@@ -1,0 +1,29 @@
+{
+  "_comment": "Recorded football-data.org v4 poll snapshots for the offline goal-news proof. Snapshot 0 is the match at 0-0 (baseline, no fire). Snapshot 1 is the same match after a France goal (fires exactly one GOAL event). The goals[] array is the optional scorer enrichment football-data exposes on the match-detail payload. No real broadcast media is referenced; visuals resolve to Commons stills only.",
+  "snapshots": [
+    [
+      {
+        "id": 537821,
+        "competition": {"name": "FIFA World Cup"},
+        "homeTeam": {"name": "France", "shortName": "France"},
+        "awayTeam": {"name": "Argentina", "shortName": "Argentina"},
+        "score": {"fullTime": {"home": 0, "away": 0}},
+        "minute": 12,
+        "goals": []
+      }
+    ],
+    [
+      {
+        "id": 537821,
+        "competition": {"name": "FIFA World Cup"},
+        "homeTeam": {"name": "France", "shortName": "France"},
+        "awayTeam": {"name": "Argentina", "shortName": "Argentina"},
+        "score": {"fullTime": {"home": 1, "away": 0}},
+        "minute": 23,
+        "goals": [
+          {"minute": 23, "team": {"name": "France"}, "scorer": {"name": "Kylian Mbappe"}}
+        ]
+      }
+    ]
+  ]
+}
