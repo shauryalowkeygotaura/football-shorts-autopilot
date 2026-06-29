@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-28T08:52:43Z",
+  "ts": "2026-06-29T10:54:58Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] World Cup Drama: FIFA Faces Backlash Over Uruguay VAR Scanda -> 1 doc + 2 shorts",
+  "summary": "[dry] How A Country With ZERO Football Culture Built A SUPERTEAM -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "World Cup Drama: FIFA Faces Backlash Over Uruguay VAR Scandal",
-    "beats": 9,
-    "shorts": 2,
+    "topic": "How A Country With ZERO Football Culture Built A SUPERTEAM",
+    "beats": 11,
+    "shorts": 3,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 172.7
+    "doc_seconds": 198.4
   },
   "budgets": {
     "youtube": {
