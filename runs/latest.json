@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-29T10:54:58Z",
+  "ts": "2026-06-30T09:30:35Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] How A Country With ZERO Football Culture Built A SUPERTEAM -> 1 doc + 3 shorts",
+  "summary": "[dry] Cruyff: The Total Footballer -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "How A Country With ZERO Football Culture Built A SUPERTEAM",
-    "beats": 11,
-    "shorts": 3,
+    "topic": "Cruyff: The Total Footballer",
+    "beats": 9,
+    "shorts": 2,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 198.4
+    "doc_seconds": 137.6
   },
   "budgets": {
     "youtube": {
