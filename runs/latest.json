@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-06-30T09:30:35Z",
+  "ts": "2026-07-01T09:47:10Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] Cruyff: The Total Footballer -> 1 doc + 2 shorts",
+  "summary": "[dry] FIFA\u2019s Worst World Cup Nightmare Just EXPLODED -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "Cruyff: The Total Footballer",
-    "beats": 9,
-    "shorts": 2,
+    "topic": "FIFA\u2019s Worst World Cup Nightmare Just EXPLODED",
+    "beats": 11,
+    "shorts": 4,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 137.6
+    "doc_seconds": 207.9
   },
   "budgets": {
     "youtube": {
