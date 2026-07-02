@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-07-01T09:47:10Z",
+  "ts": "2026-07-02T08:53:19Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] FIFA\u2019s Worst World Cup Nightmare Just EXPLODED -> 1 doc + 4 shorts",
+  "summary": "[dry] Greatest Footballers of All Time - Messi, Ronaldo, Maradona  -> 1 doc + 1 shorts",
   "metrics": {
-    "topic": "FIFA\u2019s Worst World Cup Nightmare Just EXPLODED",
-    "beats": 11,
-    "shorts": 4,
+    "topic": "Greatest Footballers of All Time - Messi, Ronaldo, Maradona & Pele",
+    "beats": 9,
+    "shorts": 1,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 207.9
+    "doc_seconds": 173.7
   },
   "budgets": {
     "youtube": {
