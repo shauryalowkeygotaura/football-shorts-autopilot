@@ -1,22 +1,9 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-07-02T08:53:19Z",
+  "ts": "2026-07-03T08:58:07Z",
   "mode": "cycle",
-  "status": "ok",
-  "summary": "[dry] Greatest Footballers of All Time - Messi, Ronaldo, Maradona  -> 1 doc + 1 shorts",
-  "metrics": {
-    "topic": "Greatest Footballers of All Time - Messi, Ronaldo, Maradona & Pele",
-    "beats": 9,
-    "shorts": 1,
-    "docs": 1,
-    "dry_run": true,
-    "doc_seconds": 173.7
-  },
-  "budgets": {
-    "youtube": {
-      "used": null,
-      "limit": 10000,
-      "note": "1600 units/upload; ~6/day on default quota"
-    }
-  }
+  "status": "error",
+  "summary": "cycle failed: NoAudioReceived: No audio was received. Please verify that your parameters are correct.",
+  "metrics": {},
+  "budgets": {}
 }
