@@ -1,9 +1,22 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-07-03T08:58:07Z",
+  "ts": "2026-07-04T08:35:51Z",
   "mode": "cycle",
-  "status": "error",
-  "summary": "cycle failed: NoAudioReceived: No audio was received. Please verify that your parameters are correct.",
-  "metrics": {},
-  "budgets": {}
+  "status": "ok",
+  "summary": "[dry] FIFA Corruption Scandal Explained -> 1 doc + 2 shorts",
+  "metrics": {
+    "topic": "FIFA Corruption Scandal Explained",
+    "beats": 9,
+    "shorts": 2,
+    "docs": 1,
+    "dry_run": true,
+    "doc_seconds": 157.3
+  },
+  "budgets": {
+    "youtube": {
+      "used": null,
+      "limit": 10000,
+      "note": "1600 units/upload; ~6/day on default quota"
+    }
+  }
 }
