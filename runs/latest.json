@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-07-04T08:35:51Z",
+  "ts": "2026-07-05T08:54:03Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] FIFA Corruption Scandal Explained -> 1 doc + 2 shorts",
+  "summary": "[dry] FIFA SHOCKER! REFEREE SUSPENDED AFTER GHANA VS ENGLAND PENAL -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "FIFA Corruption Scandal Explained",
-    "beats": 9,
-    "shorts": 2,
+    "topic": "FIFA SHOCKER! REFEREE SUSPENDED AFTER GHANA VS ENGLAND PENALTY SCANDAL",
+    "beats": 10,
+    "shorts": 3,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 157.3
+    "doc_seconds": 152.6
   },
   "budgets": {
     "youtube": {
