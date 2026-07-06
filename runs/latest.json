@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-07-05T08:54:03Z",
+  "ts": "2026-07-06T10:14:31Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] FIFA SHOCKER! REFEREE SUSPENDED AFTER GHANA VS ENGLAND PENAL -> 1 doc + 3 shorts",
+  "summary": "[dry] Trump Panics as FIFA Scandal Blown Wide Open -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "FIFA SHOCKER! REFEREE SUSPENDED AFTER GHANA VS ENGLAND PENALTY SCANDAL",
+    "topic": "Trump Panics as FIFA Scandal Blown Wide Open",
     "beats": 10,
-    "shorts": 3,
+    "shorts": 2,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 152.6
+    "doc_seconds": 198.5
   },
   "budgets": {
     "youtube": {
