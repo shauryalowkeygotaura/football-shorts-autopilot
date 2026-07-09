@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-07-08T08:23:14Z",
+  "ts": "2026-07-09T09:34:45Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] World Cup Drama: FIFA Faces Backlash as USA's 'BaloGate' Sca -> 1 doc + 2 shorts",
+  "summary": "[dry] FIFA World Cup News: Referee For Argentina vs Egypt Now Bein -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "World Cup Drama: FIFA Faces Backlash as USA's 'BaloGate' Scandal Backfires",
+    "topic": "FIFA World Cup News: Referee For Argentina vs Egypt Now Being Investigated, Could Be Banned By FIFA",
     "beats": 10,
     "shorts": 2,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 147.3
+    "doc_seconds": 156.2
   },
   "budgets": {
     "youtube": {
