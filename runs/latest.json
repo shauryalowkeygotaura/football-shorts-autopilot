@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-07-09T09:34:45Z",
+  "ts": "2026-07-10T09:32:20Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] FIFA World Cup News: Referee For Argentina vs Egypt Now Bein -> 1 doc + 2 shorts",
+  "summary": "[dry] FIFA's Worst Nightmare Comes True As Argentina's VAR Scandal -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "FIFA World Cup News: Referee For Argentina vs Egypt Now Being Investigated, Could Be Banned By FIFA",
+    "topic": "FIFA's Worst Nightmare Comes True As Argentina's VAR Scandal Gets Exposed",
     "beats": 10,
     "shorts": 2,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 156.2
+    "doc_seconds": 166.3
   },
   "budgets": {
     "youtube": {
