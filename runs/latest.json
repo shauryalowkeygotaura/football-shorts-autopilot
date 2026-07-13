@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-07-12T08:14:34Z",
+  "ts": "2026-07-13T09:06:28Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] Six Nations GO NUCLEAR On FIFA After World Cup Scandal EXPLO -> 1 doc + 2 shorts",
+  "summary": "[dry] The Underdog That Nearly Destroyed Argentina\u2019s World Cup -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "Six Nations GO NUCLEAR On FIFA After World Cup Scandal EXPLODES!",
+    "topic": "The Underdog That Nearly Destroyed Argentina\u2019s World Cup",
     "beats": 9,
-    "shorts": 2,
+    "shorts": 3,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 171.8
+    "doc_seconds": 160.1
   },
   "budgets": {
     "youtube": {
