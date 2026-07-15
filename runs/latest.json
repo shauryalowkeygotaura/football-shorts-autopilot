@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-07-14T08:01:30Z",
+  "ts": "2026-07-15T08:04:01Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] The Haaland Scandal Just Got WORSE\u2026 His Own DAD Went Off On  -> 1 doc + 4 shorts",
+  "summary": "[dry] The FIFA Bribery Scandal Explained (2015 Corruption Case) -> 1 doc + 1 shorts",
   "metrics": {
-    "topic": "The Haaland Scandal Just Got WORSE\u2026 His Own DAD Went Off On FIFA?!",
+    "topic": "The FIFA Bribery Scandal Explained (2015 Corruption Case)",
     "beats": 9,
-    "shorts": 4,
+    "shorts": 1,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 168.3
+    "doc_seconds": 193.4
   },
   "budgets": {
     "youtube": {
