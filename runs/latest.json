@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-07-15T08:04:01Z",
+  "ts": "2026-07-16T08:08:48Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] The FIFA Bribery Scandal Explained (2015 Corruption Case) -> 1 doc + 1 shorts",
+  "summary": "[dry] Argentina STUNNED Again! EU Lawmakers CALL OUT FIFA Over Maj -> 1 doc + 1 shorts",
   "metrics": {
-    "topic": "The FIFA Bribery Scandal Explained (2015 Corruption Case)",
+    "topic": "Argentina STUNNED Again! EU Lawmakers CALL OUT FIFA Over Major Scandal",
     "beats": 9,
     "shorts": 1,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 193.4
+    "doc_seconds": 163.5
   },
   "budgets": {
     "youtube": {
