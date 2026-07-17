@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-07-16T08:08:48Z",
+  "ts": "2026-07-17T08:10:12Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] Argentina STUNNED Again! EU Lawmakers CALL OUT FIFA Over Maj -> 1 doc + 1 shorts",
+  "summary": "[dry] Footballers Finally Reveal The Truth About Argentina's VAR S -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "Argentina STUNNED Again! EU Lawmakers CALL OUT FIFA Over Major Scandal",
-    "beats": 9,
-    "shorts": 1,
+    "topic": "Footballers Finally Reveal The Truth About Argentina's VAR Scandal",
+    "beats": 10,
+    "shorts": 3,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 163.5
+    "doc_seconds": 228.0
   },
   "budgets": {
     "youtube": {
