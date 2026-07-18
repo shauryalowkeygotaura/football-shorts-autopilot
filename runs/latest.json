@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-07-17T08:10:12Z",
+  "ts": "2026-07-18T07:48:43Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] Footballers Finally Reveal The Truth About Argentina's VAR S -> 1 doc + 3 shorts",
+  "summary": "[dry] FIFA\u2019s Worst Nightmare Comes True As Argentina vs Spain Scan -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "Footballers Finally Reveal The Truth About Argentina's VAR Scandal",
-    "beats": 10,
-    "shorts": 3,
+    "topic": "FIFA\u2019s Worst Nightmare Comes True As Argentina vs Spain Scandal Gets Exposed",
+    "beats": 9,
+    "shorts": 2,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 228.0
+    "doc_seconds": 189.3
   },
   "budgets": {
     "youtube": {
