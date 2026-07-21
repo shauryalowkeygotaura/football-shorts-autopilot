@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-07-20T08:55:17Z",
+  "ts": "2026-07-21T08:23:55Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] FIFA\u2019s Nightmare Got Even Worse As Referee Scandals Explode -> 1 doc + 3 shorts",
+  "summary": "[dry] The Untold History of the FIFA World Cup -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "FIFA\u2019s Nightmare Got Even Worse As Referee Scandals Explode",
-    "beats": 9,
+    "topic": "The Untold History of the FIFA World Cup",
+    "beats": 10,
     "shorts": 3,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 147.8
+    "doc_seconds": 164.3
   },
   "budgets": {
     "youtube": {
