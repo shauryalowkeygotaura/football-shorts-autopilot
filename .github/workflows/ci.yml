@@ -1,0 +1,33 @@
+name: ci
+
+# Lightweight regression safety net, separate from the live autopilot runner.
+# Runs the offline tests the repo already ships (no keys, no network, no upload)
+# so a syntax/import break is caught on push instead of at the 11:30 IST cycle.
+on:
+  push:
+  pull_request:
+
+jobs:
+  offline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Compile every module
+        run: python -m py_compile *.py modules/*.py
+
+      - name: Offline b-roll test (no keys, no network)
+        run: python test_broll_offline.py
+
+      - name: Offline goal-news test (render leg skipped in CI)
+        env:
+          GOAL_REPLAY_RENDER: "0"
+        run: python test_goal_replay.py
