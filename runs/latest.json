@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-07-22T08:23:50Z",
+  "ts": "2026-07-23T08:28:29Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] FIFA\u2019s Decades of Corruption EXPOSED -> 1 doc + 3 shorts",
+  "summary": "[dry] The Untold Story of FIFA -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "FIFA\u2019s Decades of Corruption EXPOSED",
+    "topic": "The Untold Story of FIFA",
     "beats": 10,
     "shorts": 3,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 157.9
+    "doc_seconds": 147.9
   },
   "budgets": {
     "youtube": {
