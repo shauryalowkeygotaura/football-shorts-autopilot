@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-07-25T08:06:05Z",
+  "ts": "2026-07-26T08:23:14Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] FIFA's Worst Nightmare Comes Alive As World Cup Betting Scan -> 1 doc + 3 shorts",
+  "summary": "[dry] The Millionaire lifestyle nearly destroyed this Footballer -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "FIFA's Worst Nightmare Comes Alive As World Cup Betting Scandal Explodes",
-    "beats": 9,
-    "shorts": 3,
+    "topic": "The Millionaire lifestyle nearly destroyed this Footballer",
+    "beats": 10,
+    "shorts": 2,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 190.3
+    "doc_seconds": 230.3
   },
   "budgets": {
     "youtube": {
