@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-07-27T09:49:01Z",
+  "ts": "2026-07-28T08:32:31Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] The Untold Story of the FIFA World Cup -> 1 doc + 3 shorts",
+  "summary": "[dry] FIFA Faces Massive Backlash As Argentina Players Get Banned  -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "The Untold Story of the FIFA World Cup",
+    "topic": "FIFA Faces Massive Backlash As Argentina Players Get Banned After World Cup Final",
     "beats": 9,
     "shorts": 3,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 203.4
+    "doc_seconds": 180.6
   },
   "budgets": {
     "youtube": {
