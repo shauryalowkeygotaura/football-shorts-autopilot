@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-07-30T08:24:04Z",
+  "ts": "2026-07-31T08:47:51Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] From 1930 to Today: The Untold Story of the FIFA World Cup. -> 1 doc + 4 shorts",
+  "summary": "[dry] Exposing FIFA's Corruption Empire ft. Ankit -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "From 1930 to Today: The Untold Story of the FIFA World Cup.",
-    "beats": 9,
-    "shorts": 4,
+    "topic": "Exposing FIFA's Corruption Empire ft. Ankit",
+    "beats": 10,
+    "shorts": 2,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 171.6
+    "doc_seconds": 156.2
   },
   "budgets": {
     "youtube": {
