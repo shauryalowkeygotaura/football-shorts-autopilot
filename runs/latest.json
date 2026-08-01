@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-07-31T08:47:51Z",
+  "ts": "2026-08-01T08:18:24Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] Exposing FIFA's Corruption Empire ft. Ankit -> 1 doc + 2 shorts",
+  "summary": "[dry] Could the World Cup sell-off scandal cost FIFA's boss his jo -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "Exposing FIFA's Corruption Empire ft. Ankit",
-    "beats": 10,
+    "topic": "Could the World Cup sell-off scandal cost FIFA's boss his job?",
+    "beats": 9,
     "shorts": 2,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 156.2
+    "doc_seconds": 188.3
   },
   "budgets": {
     "youtube": {
