@@ -60,7 +60,8 @@
     "exposing fifas corruption empire ft ankit",
     "could the world cup selloff scandal cost fifas boss his job",
     "every level of footballer explained by a pro",
-    "how fifa was corrupted"
+    "how fifa was corrupted",
+    "how the king of fifa went too far"
   ],
   "published": [
     {
@@ -1902,6 +1903,22 @@
       "title": "FIFA: $1.5 Billion Scandal #shorts",
       "topic": "How FIFA was corrupted",
       "published_at": "2026-08-03T09:39:01.655975+00:00"
+    },
+    {
+      "asset": "20260804-082755-doc.mp4",
+      "kind": "doc",
+      "video_id": "DRYRUN-20260804-082755-doc",
+      "title": "Sepp Blatter's Downfall",
+      "topic": "How the King of FIFA went too far",
+      "published_at": "2026-08-04T08:32:12.353281+00:00"
+    },
+    {
+      "asset": "20260804-082755-short0.mp4",
+      "kind": "short",
+      "video_id": "DRYRUN-20260804-082755-short0",
+      "title": "How the King of FIFA went too far #shorts",
+      "topic": "How the King of FIFA went too far",
+      "published_at": "2026-08-04T08:32:12.865623+00:00"
     }
   ]
 }

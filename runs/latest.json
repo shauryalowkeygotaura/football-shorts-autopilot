@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-08-03T09:39:01Z",
+  "ts": "2026-08-04T08:32:12Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] How FIFA was corrupted -> 1 doc + 2 shorts",
+  "summary": "[dry] How the King of FIFA went too far -> 1 doc + 1 shorts",
   "metrics": {
-    "topic": "How FIFA was corrupted",
-    "beats": 9,
-    "shorts": 2,
+    "topic": "How the King of FIFA went too far",
+    "beats": 8,
+    "shorts": 1,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 156.5
+    "doc_seconds": 183.0
   },
   "budgets": {
     "youtube": {
