@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-08-04T08:32:12Z",
+  "ts": "2026-08-05T08:34:17Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] How the King of FIFA went too far -> 1 doc + 1 shorts",
+  "summary": "[dry] From Maradona to Messi: The Untold History of the World Cup -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "How the King of FIFA went too far",
-    "beats": 8,
-    "shorts": 1,
+    "topic": "From Maradona to Messi: The Untold History of the World Cup",
+    "beats": 9,
+    "shorts": 4,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 183.0
+    "doc_seconds": 135.5
   },
   "budgets": {
     "youtube": {
