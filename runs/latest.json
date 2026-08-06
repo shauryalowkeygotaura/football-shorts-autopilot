@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-08-05T08:34:17Z",
+  "ts": "2026-08-06T08:36:34Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] From Maradona to Messi: The Untold History of the World Cup -> 1 doc + 4 shorts",
+  "summary": "[dry] The Untold History of the FIFA World Cup (In 10 Minutes!) -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "From Maradona to Messi: The Untold History of the World Cup",
+    "topic": "The Untold History of the FIFA World Cup (In 10 Minutes!)",
     "beats": 9,
     "shorts": 4,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 135.5
+    "doc_seconds": 251.0
   },
   "budgets": {
     "youtube": {
