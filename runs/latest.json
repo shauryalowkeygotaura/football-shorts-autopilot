@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-08-07T07:13:49Z",
+  "ts": "2026-08-08T06:48:56Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] The 7 Greatest Underdog Stories In Football History -> 1 doc + 4 shorts",
+  "summary": "[dry] THE WORLD CUP WAS HIJACKED? -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "The 7 Greatest Underdog Stories In Football History",
+    "topic": "THE WORLD CUP WAS HIJACKED?",
     "beats": 9,
     "shorts": 4,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 174.5
+    "doc_seconds": 147.5
   },
   "budgets": {
     "youtube": {
