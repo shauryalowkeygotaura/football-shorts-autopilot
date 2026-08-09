@@ -77,23 +77,71 @@ def _escape_filter_path(p: Path) -> str:
     return p.as_posix().replace(":", "\\:")
 
 
+def _to_ass(srt: Path, out: Path) -> Path:
+    """Rewrite the SRT as ASS with an explicit canvas.
+
+    SRT carries no resolution, so libass assumes a 384x288 script canvas and
+    scales from there: `FontSize` and `MarginV` in a `force_style` string stop
+    meaning pixels. A MarginV of 260 intended as "260px up from the bottom of a
+    1920-tall frame" is 260 of 288 lines, which puts the captions at the TOP.
+    Stating PlayResX/PlayResY makes every number real pixels.
+    """
+    w, h = config.SHORT_RESOLUTION
+    font_size = int(h * 0.036)
+    margin_v = int(h * 0.14)        # clear of the Shorts UI overlay
+    header = (
+        "[Script Info]\nScriptType: v4.00+\n"
+        f"PlayResX: {w}\nPlayResY: {h}\n"
+        "WrapStyle: 0\nScaledBorderAndShadow: yes\n\n"
+        "[V4+ Styles]\n"
+        "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, "
+        "OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, "
+        "ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, "
+        "MarginL, MarginR, MarginV, Encoding\n"
+        f"Style: Cap,Arial,{font_size},&H00FFFFFF,&H000000FF,&H00000000,&H80000000,"
+        f"-1,0,0,0,100,100,0,0,1,{max(3, font_size // 12)},2,2,70,70,{margin_v},1\n\n"
+        "[Events]\n"
+        "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, "
+        "Effect, Text\n"
+    )
+
+    def ass_ts(srt_ts: str) -> str:
+        hh, mm, rest = srt_ts.split(":")
+        ss, ms = rest.split(",")
+        return f"{int(hh):d}:{mm}:{ss}.{int(ms) // 10:02d}"
+
+    events = []
+    for block in srt.read_text(encoding="utf-8").split("\n\n"):
+        rows = [r for r in block.strip().splitlines() if r.strip()]
+        if len(rows) < 3 or "-->" not in rows[1]:
+            continue
+        start_ts, end_ts = (p.strip() for p in rows[1].split("-->"))
+        text = " ".join(rows[2:]).replace("{", "(").replace("}", ")")
+        events.append(f"Dialogue: 0,{ass_ts(start_ts)},{ass_ts(end_ts)},Cap,,0,0,0,,{text}")
+
+    out.write_text((header + "\n".join(events) + "\n") if events else "",
+                   encoding="utf-8")
+    return out
+
+
 def _cut_vertical(doc: Path, start: float, end: float, srt: Path, out: Path) -> Path:
     w, h = config.SHORT_RESOLUTION
     # Blurred 9:16 fill + centered 16:9 content + burned captions.
-    style = ("FontName=Arial,FontSize=14,Bold=1,PrimaryColour=&H00FFFFFF,"
-             "OutlineColour=&H00000000,BorderStyle=1,Outline=3,Shadow=1,"
-             "Alignment=2,MarginV=260")
     base_vf = (
         f"[0:v]split=2[bg][fg];"
         f"[bg]scale={w}:{h},boxblur=30:5,setsar=1[bgb];"
         f"[fg]scale={w}:-1[fgs];"
         f"[bgb][fgs]overlay=(W-w)/2:(H-h)/2[base]"
     )
-    # An empty .srt crashes the subtitles filter, so only burn captions when
-    # the window actually has caption lines.
+    # An empty caption file crashes the subtitles filter, so only burn captions
+    # when the window actually has caption lines.
     has_captions = srt.exists() and srt.stat().st_size > 0
     if has_captions:
-        vf = base_vf + f";[base]subtitles='{_escape_filter_path(srt)}':force_style='{style}'[v]"
+        ass = _to_ass(srt, srt.with_suffix(".ass"))
+        has_captions = ass.stat().st_size > 0
+    if has_captions:
+        # No force_style: the .ass file owns its own geometry (see _to_ass).
+        vf = base_vf + f";[base]subtitles='{_escape_filter_path(ass)}'[v]"
     else:
         # No caption lines in this window: relabel the final output [base]->[v].
         vf = base_vf[:-len("[base]")] + "[v]"
