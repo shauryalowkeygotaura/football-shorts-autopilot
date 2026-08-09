@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-08-08T06:48:56Z",
+  "ts": "2026-08-09T06:53:32Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] THE WORLD CUP WAS HIJACKED? -> 1 doc + 4 shorts",
+  "summary": "[dry] 5 Nations WALK AWAY From the 2030 World Cup After FIFA Contr -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "THE WORLD CUP WAS HIJACKED?",
+    "topic": "5 Nations WALK AWAY From the 2030 World Cup After FIFA Controversy",
     "beats": 9,
     "shorts": 4,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 147.5
+    "doc_seconds": 167.9
   },
   "budgets": {
     "youtube": {
