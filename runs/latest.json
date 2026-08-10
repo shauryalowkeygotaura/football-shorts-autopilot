@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-08-09T06:53:32Z",
+  "ts": "2026-08-10T07:28:31Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] 5 Nations WALK AWAY From the 2030 World Cup After FIFA Contr -> 1 doc + 4 shorts",
+  "summary": "[dry] The Complete History of the FIFA World Cup (1930\u20132026) -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "5 Nations WALK AWAY From the 2030 World Cup After FIFA Controversy",
-    "beats": 9,
-    "shorts": 4,
+    "topic": "The Complete History of the FIFA World Cup (1930\u20132026)",
+    "beats": 10,
+    "shorts": 3,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 167.9
+    "doc_seconds": 180.9
   },
   "budgets": {
     "youtube": {
