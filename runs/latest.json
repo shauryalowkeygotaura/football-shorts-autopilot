@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-08-15T06:37:07Z",
+  "ts": "2026-08-16T06:37:19Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] The Untold Story Of How The FIFA World Cup Got Stolen TWICE -> 1 doc + 4 shorts",
+  "summary": "[dry] FIFA World Cup: The Most Evil Business In The World -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "The Untold Story Of How The FIFA World Cup Got Stolen TWICE",
+    "topic": "FIFA World Cup: The Most Evil Business In The World",
     "beats": 9,
     "shorts": 4,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 197.1
+    "doc_seconds": 254.3
   },
   "budgets": {
     "youtube": {
