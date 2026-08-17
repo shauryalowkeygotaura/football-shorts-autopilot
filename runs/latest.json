@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-08-16T06:37:19Z",
+  "ts": "2026-08-17T06:53:20Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] FIFA World Cup: The Most Evil Business In The World -> 1 doc + 4 shorts",
+  "summary": "[dry] How agents made fortunes off World Cup transfer windows -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "FIFA World Cup: The Most Evil Business In The World",
-    "beats": 9,
-    "shorts": 4,
+    "topic": "How agents made fortunes off World Cup transfer windows",
+    "beats": 10,
+    "shorts": 2,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 254.3
+    "doc_seconds": 157.3
   },
   "budgets": {
     "youtube": {
