@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-08-17T06:53:20Z",
+  "ts": "2026-08-18T06:34:34Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] How agents made fortunes off World Cup transfer windows -> 1 doc + 2 shorts",
+  "summary": "[dry] FIFA's ticketing black market explained -> 1 doc + 1 shorts",
   "metrics": {
-    "topic": "How agents made fortunes off World Cup transfer windows",
-    "beats": 10,
-    "shorts": 2,
+    "topic": "FIFA's ticketing black market explained",
+    "beats": 3,
+    "shorts": 1,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 157.3
+    "doc_seconds": 25.6
   },
   "budgets": {
     "youtube": {
