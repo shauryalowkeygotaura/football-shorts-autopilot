@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-08-18T06:34:34Z",
+  "ts": "2026-08-19T06:36:35Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] FIFA's ticketing black market explained -> 1 doc + 1 shorts",
+  "summary": "[dry] Greatest Underdog Wins in FIFA World Cup History -> 1 doc + 1 shorts",
   "metrics": {
-    "topic": "FIFA's ticketing black market explained",
+    "topic": "Greatest Underdog Wins in FIFA World Cup History",
     "beats": 3,
     "shorts": 1,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 25.6
+    "doc_seconds": 29.0
   },
   "budgets": {
     "youtube": {
