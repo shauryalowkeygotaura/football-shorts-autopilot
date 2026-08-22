@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-08-21T06:37:25Z",
+  "ts": "2026-08-22T06:30:43Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] Messi's growth-hormone story and the club that paid for it -> 1 doc + 1 shorts",
+  "summary": "[dry] 6 signs you will become PROFESSIONAL footballer. -> 1 doc + 1 shorts",
   "metrics": {
-    "topic": "Messi's growth-hormone story and the club that paid for it",
+    "topic": "6 signs you will become PROFESSIONAL footballer.",
     "beats": 3,
     "shorts": 1,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 27.3
+    "doc_seconds": 26.6
   },
   "budgets": {
     "youtube": {
