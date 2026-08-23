@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-08-22T06:30:43Z",
+  "ts": "2026-08-23T06:32:21Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] 6 signs you will become PROFESSIONAL footballer. -> 1 doc + 1 shorts",
+  "summary": "[dry] Morocco's 2022 run that united a continent -> 1 doc + 1 shorts",
   "metrics": {
-    "topic": "6 signs you will become PROFESSIONAL footballer.",
+    "topic": "Morocco's 2022 run that united a continent",
     "beats": 3,
     "shorts": 1,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 26.6
+    "doc_seconds": 29.1
   },
   "budgets": {
     "youtube": {
