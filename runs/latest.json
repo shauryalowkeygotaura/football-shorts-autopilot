@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-08-23T06:32:21Z",
+  "ts": "2026-08-24T06:45:19Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] Morocco's 2022 run that united a continent -> 1 doc + 1 shorts",
+  "summary": "[dry] The smallest nation ever to reach a World Cup -> 1 doc + 1 shorts",
   "metrics": {
-    "topic": "Morocco's 2022 run that united a continent",
+    "topic": "The smallest nation ever to reach a World Cup",
     "beats": 3,
     "shorts": 1,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 29.1
+    "doc_seconds": 26.4
   },
   "budgets": {
     "youtube": {
