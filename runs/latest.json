@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-08-25T06:37:17Z",
+  "ts": "2026-08-26T06:39:17Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "[dry] AGAIN FIFA Faces HUGE Backlash After Argentina's World Cup M -> 1 doc + 1 shorts",
+  "summary": "[dry] Why the USA suddenly cares about football in 2026 -> 1 doc + 1 shorts",
   "metrics": {
-    "topic": "AGAIN FIFA Faces HUGE Backlash After Argentina's World Cup Match",
+    "topic": "Why the USA suddenly cares about football in 2026",
     "beats": 3,
     "shorts": 1,
     "docs": 1,
     "dry_run": true,
-    "doc_seconds": 32.0
+    "doc_seconds": 30.5
   },
   "budgets": {
     "youtube": {
