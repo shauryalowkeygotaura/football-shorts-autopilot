@@ -45,7 +45,7 @@ VOICE_RATE = "+6%"   # docs read slightly brisk; shorts inherit then get punchie
 
 # ── LLM (Groq, free tier — per standing project rule, never Anthropic) ─────────
 GROQ_MODEL = "qwen/qwen3.8-27b"
-GROQ_MODEL_FAST = "llama-3.1-8b-instant"
+GROQ_MODEL_FAST = "qwen/qwen3.6-27b"
 
 # ── YouTube upload ────────────────────────────────────────────────────────────
 YT_CATEGORY_ID = "17"            # Sports
