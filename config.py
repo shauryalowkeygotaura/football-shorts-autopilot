@@ -44,7 +44,7 @@ VOICE = "en-US-AndrewMultilingualNeural"
 VOICE_RATE = "+6%"   # docs read slightly brisk; shorts inherit then get punchier
 
 # ── LLM (Groq, free tier — per standing project rule, never Anthropic) ─────────
-GROQ_MODEL = "llama-3.3-70b-versatile"
+GROQ_MODEL = "qwen/qwen3.8-27b"
 GROQ_MODEL_FAST = "llama-3.1-8b-instant"
 
 # ── YouTube upload ────────────────────────────────────────────────────────────
