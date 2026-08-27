@@ -102,6 +102,34 @@ def _search_commons(query: str, subject: str | None = None) -> str | None:
     return None
 
 
+_RASTER_TYPES = {
+    "image/jpeg", "image/jpg", "image/png", "image/webp", "image/gif",
+    "image/bmp", "image/tiff",
+}
+
+
+def _is_decodable(path: Path) -> bool:
+    """True when the bytes on disk really are an image ffmpeg can read.
+
+    PIL verify() must run on a fresh handle and invalidates the object, so the
+    file is opened twice on purpose: once to verify integrity, once to confirm
+    it loads and has real dimensions.
+    """
+    try:
+        from PIL import Image
+    except ImportError:
+        return True  # cannot verify here; let the render surface it as before
+    try:
+        with Image.open(path) as im:
+            im.verify()
+        with Image.open(path) as im:
+            im.load()
+            w, h = im.size
+        return w > 0 and h > 0
+    except Exception:
+        return False
+
+
 def _download(url: str, dest: Path, retries: int = 3) -> bool:
     """Fetch the image bytes, retrying on transient throttling (429/503).
     Returns True only on a real image payload."""
@@ -112,10 +140,21 @@ def _download(url: str, dest: Path, retries: int = 3) -> bool:
                 time.sleep(1.5 * (attempt + 1))  # linear backoff
                 continue
             r.raise_for_status()
-            if not r.headers.get("Content-Type", "").startswith("image/"):
+            ctype = r.headers.get("Content-Type", "").split(";")[0].strip().lower()
+            # startswith("image/") is not enough. Commons serves SVG as
+            # image/svg+xml, which passes that test, gets written as .jpg, and
+            # then ffmpeg dies with exit 8 on a file it cannot decode. Raster
+            # types only.
+            if ctype not in _RASTER_TYPES:
                 return False
             dest.write_bytes(r.content)
-            return dest.stat().st_size > 1000
+            if dest.stat().st_size <= 1000:
+                return False
+            # Content-Type is a claim by the server, not a fact about the bytes.
+            # A truncated or mislabelled payload still decodes as nothing, and
+            # the only place that surfaced was a hard ffmpeg crash halfway
+            # through a render. Verify it opens BEFORE the render depends on it.
+            return _is_decodable(dest)
         except Exception:
             if attempt < retries - 1:
                 time.sleep(1.5 * (attempt + 1))
