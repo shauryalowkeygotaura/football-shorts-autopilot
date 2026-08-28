@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-08-27T17:28:50Z",
+  "ts": "2026-08-28T18:15:23Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "Why a 0-0 draw can be a masterpiece -> 1 doc + 4 shorts",
+  "summary": "Why Harvard Studied This Footballer -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "Why a 0-0 draw can be a masterpiece",
-    "beats": 10,
+    "topic": "Why Harvard Studied This Footballer",
+    "beats": 14,
     "shorts": 4,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 266.0
+    "doc_seconds": 250.8
   },
   "budgets": {
     "youtube": {
