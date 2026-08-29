@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-08-28T18:15:23Z",
+  "ts": "2026-08-29T12:19:57Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "Why Harvard Studied This Footballer -> 1 doc + 4 shorts",
+  "summary": "What makes a goalkeeper world-class -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "Why Harvard Studied This Footballer",
-    "beats": 14,
+    "topic": "What makes a goalkeeper world-class",
+    "beats": 13,
     "shorts": 4,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 250.8
+    "doc_seconds": 250.5
   },
   "budgets": {
     "youtube": {
