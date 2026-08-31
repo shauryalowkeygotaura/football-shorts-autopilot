@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-08-30T11:13:37Z",
+  "ts": "2026-08-31T12:36:34Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "Group stage vs knockout: how the World Cup actually works -> 1 doc + 3 shorts",
+  "summary": "INFANTINO FACES CRIMINAL CASE: FIFA\u2019s World Cup Scandal EXPL -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "Group stage vs knockout: how the World Cup actually works",
+    "topic": "INFANTINO FACES CRIMINAL CASE: FIFA\u2019s World Cup Scandal EXPLODES",
     "beats": 13,
-    "shorts": 3,
+    "shorts": 2,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 234.9
+    "doc_seconds": 226.7
   },
   "budgets": {
     "youtube": {
