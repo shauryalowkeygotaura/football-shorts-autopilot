@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-08-31T12:36:34Z",
+  "ts": "2026-09-01T11:12:29Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "INFANTINO FACES CRIMINAL CASE: FIFA\u2019s World Cup Scandal EXPL -> 1 doc + 2 shorts",
+  "summary": "I Became A Pro Footballer For 30 Days -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "INFANTINO FACES CRIMINAL CASE: FIFA\u2019s World Cup Scandal EXPLODES",
+    "topic": "I Became A Pro Footballer For 30 Days",
     "beats": 13,
-    "shorts": 2,
+    "shorts": 4,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 226.7
+    "doc_seconds": 346.3
   },
   "budgets": {
     "youtube": {
