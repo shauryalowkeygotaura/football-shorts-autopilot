@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-09-01T11:12:29Z",
+  "ts": "2026-09-02T10:34:08Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "I Became A Pro Footballer For 30 Days -> 1 doc + 4 shorts",
+  "summary": "5 signs YOU will become a pro footballer -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "I Became A Pro Footballer For 30 Days",
-    "beats": 13,
-    "shorts": 4,
+    "topic": "5 signs YOU will become a pro footballer",
+    "beats": 10,
+    "shorts": 2,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 346.3
+    "doc_seconds": 215.3
   },
   "budgets": {
     "youtube": {
