@@ -1,22 +1,9 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-09-02T10:34:08Z",
+  "ts": "2026-09-03T10:36:10Z",
   "mode": "cycle",
-  "status": "ok",
-  "summary": "5 signs YOU will become a pro footballer -> 1 doc + 2 shorts",
-  "metrics": {
-    "topic": "5 signs YOU will become a pro footballer",
-    "beats": 10,
-    "shorts": 2,
-    "docs": 1,
-    "dry_run": false,
-    "doc_seconds": 215.3
-  },
-  "budgets": {
-    "youtube": {
-      "used": null,
-      "limit": 10000,
-      "note": "1600 units/upload; ~6/day on default quota"
-    }
-  }
+  "status": "error",
+  "summary": "cycle failed: CalledProcessError: Command '['ffmpeg', '-y', '-loglevel', 'error', '-loop', '1', '-i', '/home/runner/work/football-shorts-autopilot/football-shor",
+  "metrics": {},
+  "budgets": {}
 }
