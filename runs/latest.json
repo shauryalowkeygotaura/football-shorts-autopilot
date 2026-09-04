@@ -1,9 +1,22 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-09-03T10:36:10Z",
+  "ts": "2026-09-04T10:41:54Z",
   "mode": "cycle",
-  "status": "error",
-  "summary": "cycle failed: CalledProcessError: Command '['ffmpeg', '-y', '-loglevel', 'error', '-loop', '1', '-i', '/home/runner/work/football-shorts-autopilot/football-shor",
-  "metrics": {},
-  "budgets": {}
+  "status": "ok",
+  "summary": "The 5 dark-horse nations for 2026 -> 1 doc + 4 shorts",
+  "metrics": {
+    "topic": "The 5 dark-horse nations for 2026",
+    "beats": 14,
+    "shorts": 4,
+    "docs": 1,
+    "dry_run": false,
+    "doc_seconds": 255.4
+  },
+  "budgets": {
+    "youtube": {
+      "used": null,
+      "limit": 10000,
+      "note": "1600 units/upload; ~6/day on default quota"
+    }
+  }
 }
