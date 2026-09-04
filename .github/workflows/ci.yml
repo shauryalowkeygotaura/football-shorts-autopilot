@@ -24,6 +24,9 @@ jobs:
       - name: Compile every module
         run: python -m py_compile *.py modules/*.py
 
+      - name: Test suite (pytest; offline, no keys)
+        run: python -m pytest tests/ -q
+
       - name: Offline b-roll test (no keys, no network)
         run: python test_broll_offline.py
 

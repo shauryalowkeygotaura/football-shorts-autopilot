@@ -16,6 +16,7 @@ import time
 from pathlib import Path
 
 import requests
+from PIL import Image, UnidentifiedImageError
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 import config  # noqa: E402
@@ -190,12 +191,46 @@ def fetch_still(query: str, dest: Path, size: tuple[int, int],
     return dest, False
 
 
+def gradient_still(dest: Path, size: tuple[int, int]) -> Path:
+    """The deterministic fallback still, as a public entry point.
+
+    The composer needs it to salvage a beat whose real image will not render.
+    """
+    _gradient_card(dest, *size)
+    return dest
+
+
+def _describe_image(image: Path) -> str:
+    """Whatever can be said about a still that ffmpeg refused to render.
+
+    The image is the only variable in an otherwise fixed command, so its shape
+    is the first thing worth knowing and the one thing the traceback omits.
+    """
+    try:
+        size_b = image.stat().st_size
+    except OSError as e:
+        return "unreadable on disk (%s)" % e
+    try:
+        with Image.open(image) as im:
+            return "%s %dx%d %s, %d bytes" % (
+                im.format, im.width, im.height, im.mode, size_b)
+    except (UnidentifiedImageError, OSError, ValueError) as e:
+        return "%d bytes, PIL cannot identify it (%s)" % (size_b, e)
+
+
 def ken_burns_clip(image: Path, out: Path, duration: float,
                    size: tuple[int, int], zoom_in: bool = True) -> Path:
     """Render a slow Ken-Burns push/pull over a still -> mp4 (no audio).
 
     zoompan needs a frame budget (d) = duration * fps. Scale up first so the
     crop has headroom, then pan. fps=30.
+
+    Raises RuntimeError carrying ffmpeg's own stderr. CalledProcessError prints
+    the command and nothing else, so when this failed in CI on 2026-09-03 the
+    log showed a 300-character argv and no reason - the run died on beat 8 of
+    12 with exit status 8 and the cause was, and remains, unknowable from the
+    log. Every one of these arguments is fixed except the image, so the image
+    is described too.
     """
     w, h = size
     fps = 30
@@ -207,9 +242,31 @@ def ken_burns_clip(image: Path, out: Path, duration: float,
         f"x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)',"
         f"format=yuv420p"
     )
-    subprocess.run(
-        ["ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-i", str(image),
-         "-t", f"{duration:.3f}", "-vf", vf, "-r", str(fps),
-         "-c:v", "libx264", "-pix_fmt", "yuv420p", str(out)],
-        check=True, capture_output=True)
+    # `-loop 1` on an input ffmpeg cannot decode does NOT fail: it spins,
+    # logging "No JPEG data found in image" forever. Verified locally on
+    # 2026-09-04 against an HTML error page saved as .jpg - it ran until killed
+    # and then exited 0. Unattended, that burns the whole CI job on the
+    # workflow timeout rather than failing one beat. Rendering ~22s of 1080p
+    # Ken Burns takes well under a minute on a runner, so this ceiling only
+    # ever catches the pathological case.
+    budget = max(120.0, duration * 10)
+    try:
+        proc = subprocess.run(
+            ["ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-i", str(image),
+             "-t", f"{duration:.3f}", "-vf", vf, "-r", str(fps),
+             "-c:v", "libx264", "-pix_fmt", "yuv420p", str(out)],
+            capture_output=True, text=True, timeout=budget)
+    except subprocess.TimeoutExpired as e:
+        raise RuntimeError(
+            "ffmpeg hung rendering %s and was killed after %.0fs\n  image: %s\n"
+            "  An input it cannot decode makes `-loop 1` retry forever rather "
+            "than error."
+            % (image.name, budget, _describe_image(image))) from e
+    if proc.returncode != 0:
+        detail = (proc.stderr or "").strip().splitlines()
+        raise RuntimeError(
+            "ffmpeg could not render %s (exit %d)\n  image: %s\n  duration: %.3fs, "
+            "target: %dx%d\n  ffmpeg said: %s"
+            % (image.name, proc.returncode, _describe_image(image), duration, w, h,
+               " | ".join(detail[-4:]) or "(nothing on stderr)"))
     return out
