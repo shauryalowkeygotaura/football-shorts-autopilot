@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-09-04T10:41:54Z",
+  "ts": "2026-09-05T10:01:26Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "The 5 dark-horse nations for 2026 -> 1 doc + 4 shorts",
+  "summary": "this DAILY ROUTINE will make you a PRO footballer -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "The 5 dark-horse nations for 2026",
-    "beats": 14,
-    "shorts": 4,
+    "topic": "this DAILY ROUTINE will make you a PRO footballer",
+    "beats": 13,
+    "shorts": 2,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 255.4
+    "doc_seconds": 203.5
   },
   "budgets": {
     "youtube": {
