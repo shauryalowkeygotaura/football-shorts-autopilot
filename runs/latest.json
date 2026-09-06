@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-09-05T10:01:26Z",
+  "ts": "2026-09-06T10:14:45Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "this DAILY ROUTINE will make you a PRO footballer -> 1 doc + 2 shorts",
+  "summary": "The Footballer Who Sacrificed His Career For Crime -> 1 doc + 1 shorts",
   "metrics": {
-    "topic": "this DAILY ROUTINE will make you a PRO footballer",
+    "topic": "The Footballer Who Sacrificed His Career For Crime",
     "beats": 13,
-    "shorts": 2,
+    "shorts": 1,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 203.5
+    "doc_seconds": 300.2
   },
   "budgets": {
     "youtube": {
