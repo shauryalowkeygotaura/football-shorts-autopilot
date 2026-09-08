@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-09-07T11:31:47Z",
+  "ts": "2026-09-08T10:36:54Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "10 Footballers Who Were Rich Before Football! -> 1 doc + 2 shorts",
+  "summary": "Greatest World Cup goal ever: the real answer -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "10 Footballers Who Were Rich Before Football!",
-    "beats": 13,
+    "topic": "Greatest World Cup goal ever: the real answer",
+    "beats": 12,
     "shorts": 2,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 286.3
+    "doc_seconds": 186.7
   },
   "budgets": {
     "youtube": {
