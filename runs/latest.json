@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-09-08T10:36:54Z",
+  "ts": "2026-09-09T10:38:56Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "Greatest World Cup goal ever: the real answer -> 1 doc + 2 shorts",
+  "summary": "How the LAZIEST Footballer Became a GENERATIONAL Talent! -> 1 doc + 1 shorts",
   "metrics": {
-    "topic": "Greatest World Cup goal ever: the real answer",
-    "beats": 12,
-    "shorts": 2,
+    "topic": "How the LAZIEST Footballer Became a GENERATIONAL Talent!",
+    "beats": 3,
+    "shorts": 1,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 186.7
+    "doc_seconds": 30.3
   },
   "budgets": {
     "youtube": {
