@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-09-09T10:38:56Z",
+  "ts": "2026-09-10T10:42:19Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "How the LAZIEST Footballer Became a GENERATIONAL Talent! -> 1 doc + 1 shorts",
+  "summary": "The History of the FIFA World Cup Trophy -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "How the LAZIEST Footballer Became a GENERATIONAL Talent!",
-    "beats": 3,
-    "shorts": 1,
+    "topic": "The History of the FIFA World Cup Trophy",
+    "beats": 13,
+    "shorts": 3,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 30.3
+    "doc_seconds": 243.9
   },
   "budgets": {
     "youtube": {
