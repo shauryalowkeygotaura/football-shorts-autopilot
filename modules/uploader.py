@@ -105,3 +105,48 @@ def set_thumbnail(video_id: str, thumb_path: str | Path) -> bool:
     except Exception as e:  # custom thumbnails need a verified channel
         print(f"[thumbnail] upload failed for {video_id}: {e}")
         return False
+
+
+# ---------------------------------------------------------------------------
+# CLI entrypoint.
+#
+# Added 2026-09-10. format-render's publish.py has always shelled this module as
+#   python modules/uploader.py --file X --title Y --description Z
+# and this file had no __main__ block and no argument parser. That command
+# imported the module, defined three functions, and exited 0 having uploaded
+# nothing - while the caller read returncode 0 and reported "uploaded". The only
+# reason it never shipped a phantom success is that YT OAuth creds are absent,
+# so publish short-circuits to a dry run before reaching here.
+#
+# Emits ONE line of JSON on stdout so a caller can read the video id back and
+# close its feedback loop. Anything human-readable goes to stderr.
+if __name__ == "__main__":
+    import argparse
+    import json as _json
+    import sys as _sys
+
+    _ap = argparse.ArgumentParser(description="Upload one video to YouTube.")
+    _ap.add_argument("--file", required=True)
+    _ap.add_argument("--title", required=True)
+    _ap.add_argument("--description", default="")
+    _ap.add_argument("--tags", default="", help="comma-separated")
+    _ap.add_argument("--privacy", default=None)
+    _ap.add_argument("--thumbnail", default=None)
+    _args = _ap.parse_args()
+
+    _tags = [t.strip() for t in _args.tags.split(",") if t.strip()]
+    try:
+        _vid = upload(_args.file, _args.title, _args.description, _tags,
+                      privacy=_args.privacy)
+    except Exception as _e:  # noqa: BLE001 - CLI boundary
+        print(_json.dumps({"ok": False, "error": f"{type(_e).__name__}: {_e}"}))
+        _sys.exit(1)
+
+    _thumb_ok = None
+    if _args.thumbnail:
+        # Non-fatal by contract: a thumbnail failure must not sink an upload
+        # that already burned 1,600 quota units.
+        _thumb_ok = set_thumbnail(_vid, _args.thumbnail)
+
+    print(_json.dumps({"ok": True, "video_id": _vid, "dry_run": is_dry(),
+                       "thumbnail_set": _thumb_ok}))
