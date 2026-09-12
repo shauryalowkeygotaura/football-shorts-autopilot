@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-09-11T10:28:04Z",
+  "ts": "2026-09-12T10:06:48Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "BRITAIN'S BIGGEST FOOTBALL SCANDAL? -> 1 doc + 1 shorts",
+  "summary": "How FIFA Corruption Actually Works -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "BRITAIN'S BIGGEST FOOTBALL SCANDAL?",
-    "beats": 3,
-    "shorts": 1,
+    "topic": "How FIFA Corruption Actually Works",
+    "beats": 12,
+    "shorts": 2,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 25.2
+    "doc_seconds": 287.8
   },
   "budgets": {
     "youtube": {
