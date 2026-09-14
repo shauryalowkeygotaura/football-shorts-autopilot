@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-09-13T11:08:44Z",
+  "ts": "2026-09-14T11:42:03Z",
   "mode": "cycle",
   "status": "ok",
   "summary": "How FIFA Corruption Actually Works -> 1 doc + 2 shorts",
   "metrics": {
     "topic": "How FIFA Corruption Actually Works",
-    "beats": 13,
+    "beats": 12,
     "shorts": 2,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 309.6
+    "doc_seconds": 282.7
   },
   "budgets": {
     "youtube": {
