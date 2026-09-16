@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-09-15T11:06:19Z",
+  "ts": "2026-09-16T10:48:18Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "IT WILL GIVE YOU GOOSEBUMPS - Cristiano Ronaldo Motivational -> 1 doc + 4 shorts",
+  "summary": "How FIFA Corruption Actually Works -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "IT WILL GIVE YOU GOOSEBUMPS - Cristiano Ronaldo Motivational video",
-    "beats": 10,
-    "shorts": 4,
+    "topic": "How FIFA Corruption Actually Works",
+    "beats": 11,
+    "shorts": 3,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 305.3
+    "doc_seconds": 170.4
   },
   "budgets": {
     "youtube": {
