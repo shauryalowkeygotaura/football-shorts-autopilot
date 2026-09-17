@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-09-16T10:48:18Z",
+  "ts": "2026-09-17T11:04:09Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "How FIFA Corruption Actually Works -> 1 doc + 3 shorts",
+  "summary": "Why Ruud Gullit Was The Most Complete Footballer Ever -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "How FIFA Corruption Actually Works",
-    "beats": 11,
+    "topic": "Why Ruud Gullit Was The Most Complete Footballer Ever",
+    "beats": 12,
     "shorts": 3,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 170.4
+    "doc_seconds": 291.0
   },
   "budgets": {
     "youtube": {
