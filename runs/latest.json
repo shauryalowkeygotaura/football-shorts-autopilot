@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-09-17T11:04:09Z",
+  "ts": "2026-09-18T10:33:16Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "Why Ruud Gullit Was The Most Complete Footballer Ever -> 1 doc + 3 shorts",
+  "summary": "Guess the Secret World Cup Footballer ft Gerard Piqu\u00e9! -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "Why Ruud Gullit Was The Most Complete Footballer Ever",
-    "beats": 12,
+    "topic": "Guess the Secret World Cup Footballer ft Gerard Piqu\u00e9!",
+    "beats": 13,
     "shorts": 3,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 291.0
+    "doc_seconds": 249.0
   },
   "budgets": {
     "youtube": {
