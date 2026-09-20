@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-09-19T10:15:41Z",
+  "ts": "2026-09-20T10:36:23Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "Guess the Secret World Cup Footballer ft Gerard Piqu\u00e9! -> 1 doc + 4 shorts",
+  "summary": "Guess the Secret World Cup Footballer ft Gerard Piqu\u00e9! -> 1 doc + 2 shorts",
   "metrics": {
     "topic": "Guess the Secret World Cup Footballer ft Gerard Piqu\u00e9!",
-    "beats": 10,
-    "shorts": 4,
+    "beats": 12,
+    "shorts": 2,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 213.8
+    "doc_seconds": 227.0
   },
   "budgets": {
     "youtube": {
