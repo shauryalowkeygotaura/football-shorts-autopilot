@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-09-21T11:52:03Z",
+  "ts": "2026-09-22T10:55:25Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "FIFA's Secrets: Scandal, Corruption & Exploitation of the 'B -> 1 doc + 3 shorts",
+  "summary": "7 Signs You'll ACTUALLY Become a Pro Footballer -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "FIFA's Secrets: Scandal, Corruption & Exploitation of the 'Beautiful Game'",
-    "beats": 12,
-    "shorts": 3,
+    "topic": "7 Signs You'll ACTUALLY Become a Pro Footballer",
+    "beats": 9,
+    "shorts": 4,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 327.4
+    "doc_seconds": 194.8
   },
   "budgets": {
     "youtube": {
