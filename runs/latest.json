@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-09-24T11:12:42Z",
+  "ts": "2026-09-25T11:10:55Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "George Best: The Fame That Destroyed a Football Genius -> 1 doc + 4 shorts",
+  "summary": "Guess the Secret World Cup Footballer ft Gerard Piqu\u00e9! -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "George Best: The Fame That Destroyed a Football Genius",
-    "beats": 12,
+    "topic": "Guess the Secret World Cup Footballer ft Gerard Piqu\u00e9!",
+    "beats": 9,
     "shorts": 4,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 350.7
+    "doc_seconds": 319.6
   },
   "budgets": {
     "youtube": {
