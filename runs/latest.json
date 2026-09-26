@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-09-25T11:10:55Z",
+  "ts": "2026-09-26T10:49:18Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "Guess the Secret World Cup Footballer ft Gerard Piqu\u00e9! -> 1 doc + 4 shorts",
+  "summary": "The BIGGEST UNDERDOG of Each UEFA Euro (1992 - 2020) -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "Guess the Secret World Cup Footballer ft Gerard Piqu\u00e9!",
-    "beats": 9,
+    "topic": "The BIGGEST UNDERDOG of Each UEFA Euro (1992 - 2020)",
+    "beats": 10,
     "shorts": 4,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 319.6
+    "doc_seconds": 212.4
   },
   "budgets": {
     "youtube": {
