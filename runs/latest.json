@@ -1,22 +1,9 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-09-26T10:49:18Z",
+  "ts": "2026-09-27T11:12:20Z",
   "mode": "cycle",
-  "status": "ok",
-  "summary": "The BIGGEST UNDERDOG of Each UEFA Euro (1992 - 2020) -> 1 doc + 4 shorts",
-  "metrics": {
-    "topic": "The BIGGEST UNDERDOG of Each UEFA Euro (1992 - 2020)",
-    "beats": 10,
-    "shorts": 4,
-    "docs": 1,
-    "dry_run": false,
-    "doc_seconds": 212.4
-  },
-  "budgets": {
-    "youtube": {
-      "used": null,
-      "limit": 10000,
-      "note": "1600 units/upload; ~6/day on default quota"
-    }
-  }
+  "status": "error",
+  "summary": "cycle failed: NoAudioReceived: No audio was received. Please verify that your parameters are correct.",
+  "metrics": {},
+  "budgets": {}
 }
