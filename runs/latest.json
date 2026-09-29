@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-09-28T12:51:25Z",
+  "ts": "2026-09-29T12:07:22Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "What It Was Like to Become a Professional Footballer From No -> 1 doc + 4 shorts",
+  "summary": "BECOMING A PRO FOOTBALLER \u2502 My Story -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "What It Was Like to Become a Professional Footballer From Nothing",
-    "beats": 12,
+    "topic": "BECOMING A PRO FOOTBALLER \u2502 My Story",
+    "beats": 13,
     "shorts": 4,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 243.0
+    "doc_seconds": 210.0
   },
   "budgets": {
     "youtube": {
