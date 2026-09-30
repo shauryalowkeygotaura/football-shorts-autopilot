@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-09-29T12:07:22Z",
+  "ts": "2026-09-30T11:56:45Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "BECOMING A PRO FOOTBALLER \u2502 My Story -> 1 doc + 4 shorts",
+  "summary": "How FIFA Corruption Actually Works -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "BECOMING A PRO FOOTBALLER \u2502 My Story",
-    "beats": 13,
+    "topic": "How FIFA Corruption Actually Works",
+    "beats": 10,
     "shorts": 4,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 210.0
+    "doc_seconds": 229.7
   },
   "budgets": {
     "youtube": {
