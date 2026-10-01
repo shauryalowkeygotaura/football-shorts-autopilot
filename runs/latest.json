@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-09-30T11:56:45Z",
+  "ts": "2026-10-01T12:25:20Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "How FIFA Corruption Actually Works -> 1 doc + 4 shorts",
+  "summary": "Every Footballer Who Represented TWO Different NATIONS -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "How FIFA Corruption Actually Works",
-    "beats": 10,
+    "topic": "Every Footballer Who Represented TWO Different NATIONS",
+    "beats": 13,
     "shorts": 4,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 229.7
+    "doc_seconds": 202.3
   },
   "budgets": {
     "youtube": {
