@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-10-01T12:25:20Z",
+  "ts": "2026-10-02T11:50:34Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "Every Footballer Who Represented TWO Different NATIONS -> 1 doc + 4 shorts",
+  "summary": "An Inside Look Into a Professional Footballer's Life (BEHIND -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "Every Footballer Who Represented TWO Different NATIONS",
-    "beats": 13,
-    "shorts": 4,
+    "topic": "An Inside Look Into a Professional Footballer's Life (BEHIND THE SCENES)",
+    "beats": 12,
+    "shorts": 2,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 202.3
+    "doc_seconds": 166.0
   },
   "budgets": {
     "youtube": {
