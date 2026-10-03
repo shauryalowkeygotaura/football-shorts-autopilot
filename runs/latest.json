@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-10-02T11:50:34Z",
+  "ts": "2026-10-03T11:04:43Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "An Inside Look Into a Professional Footballer's Life (BEHIND -> 1 doc + 2 shorts",
+  "summary": "Guess the Secret World Cup Footballer ft Gerard Piqu\u00e9! -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "An Inside Look Into a Professional Footballer's Life (BEHIND THE SCENES)",
-    "beats": 12,
+    "topic": "Guess the Secret World Cup Footballer ft Gerard Piqu\u00e9!",
+    "beats": 13,
     "shorts": 2,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 166.0
+    "doc_seconds": 154.3
   },
   "budgets": {
     "youtube": {
