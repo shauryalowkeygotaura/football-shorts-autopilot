@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-10-04T11:47:29Z",
+  "ts": "2026-10-05T13:29:19Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "How \"Kid Messi\" RUINED His Career Before It Even Started... -> 1 doc + 2 shorts",
+  "summary": "Guess the Secret World Cup Footballer ft Gerard Piqu\u00e9! -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "How \"Kid Messi\" RUINED His Career Before It Even Started...",
-    "beats": 10,
-    "shorts": 2,
+    "topic": "Guess the Secret World Cup Footballer ft Gerard Piqu\u00e9!",
+    "beats": 13,
+    "shorts": 3,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 170.1
+    "doc_seconds": 261.8
   },
   "budgets": {
     "youtube": {
