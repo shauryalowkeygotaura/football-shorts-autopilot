@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-10-06T12:48:25Z",
+  "ts": "2026-10-07T12:44:22Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "Life of a 22y/o Football Agent (Miami to New York) -> 1 doc + 2 shorts",
+  "summary": "How A Teenager Became The Most Hated Footballer On The Plane -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "Life of a 22y/o Football Agent (Miami to New York)",
-    "beats": 11,
+    "topic": "How A Teenager Became The Most Hated Footballer On The Planet",
+    "beats": 12,
     "shorts": 2,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 343.8
+    "doc_seconds": 345.8
   },
   "budgets": {
     "youtube": {
