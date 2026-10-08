@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-10-07T12:44:22Z",
+  "ts": "2026-10-08T12:49:54Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "How A Teenager Became The Most Hated Footballer On The Plane -> 1 doc + 2 shorts",
+  "summary": "How FIFA Corruption Actually Works -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "How A Teenager Became The Most Hated Footballer On The Planet",
-    "beats": 12,
-    "shorts": 2,
+    "topic": "How FIFA Corruption Actually Works",
+    "beats": 11,
+    "shorts": 3,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 345.8
+    "doc_seconds": 279.3
   },
   "budgets": {
     "youtube": {
