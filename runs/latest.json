@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-10-08T12:49:54Z",
+  "ts": "2026-10-09T12:34:04Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "How FIFA Corruption Actually Works -> 1 doc + 3 shorts",
+  "summary": "DAY IN THE LIFE OF A DIVISION 1 FOOTBALLER -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "How FIFA Corruption Actually Works",
+    "topic": "DAY IN THE LIFE OF A DIVISION 1 FOOTBALLER",
     "beats": 11,
-    "shorts": 3,
+    "shorts": 2,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 279.3
+    "doc_seconds": 308.8
   },
   "budgets": {
     "youtube": {
