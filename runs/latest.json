@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-10-09T12:34:04Z",
+  "ts": "2026-10-10T12:01:40Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "DAY IN THE LIFE OF A DIVISION 1 FOOTBALLER -> 1 doc + 2 shorts",
+  "summary": "FIFA World Cup All Finals Explained in 60 Minutes (1930-2022 -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "DAY IN THE LIFE OF A DIVISION 1 FOOTBALLER",
-    "beats": 11,
-    "shorts": 2,
+    "topic": "FIFA World Cup All Finals Explained in 60 Minutes (1930-2022)",
+    "beats": 21,
+    "shorts": 4,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 308.8
+    "doc_seconds": 366.8
   },
   "budgets": {
     "youtube": {
