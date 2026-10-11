@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-10-10T12:01:40Z",
+  "ts": "2026-10-11T12:09:54Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "FIFA World Cup All Finals Explained in 60 Minutes (1930-2022 -> 1 doc + 4 shorts",
+  "summary": "The Rise of the Underdogs -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "FIFA World Cup All Finals Explained in 60 Minutes (1930-2022)",
-    "beats": 21,
+    "topic": "The Rise of the Underdogs",
+    "beats": 10,
     "shorts": 4,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 366.8
+    "doc_seconds": 361.2
   },
   "budgets": {
     "youtube": {
