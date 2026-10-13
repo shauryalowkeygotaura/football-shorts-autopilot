@@ -1,6 +1,6 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-10-12T14:09:12Z",
+  "ts": "2026-10-13T13:21:01Z",
   "mode": "cycle",
   "status": "error",
   "summary": "cycle failed: WSServerHandshakeError: 403, message='Invalid response status', url='wss://speech.platform.bing.com/consumer/speech/synthesize/readaloud/edge/v1?T",
