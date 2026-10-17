@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-10-16T10:43:35Z",
+  "ts": "2026-10-17T10:09:27Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "2026 FIFA World Cup visa scandal: NPP to address media ahead -> 1 doc + 2 shorts",
+  "summary": "FIFA Corruption: The Dark Dealings Behind The Qatar World Cu -> 1 doc + 1 shorts",
   "metrics": {
-    "topic": "2026 FIFA World Cup visa scandal: NPP to address media ahead of parliamentary hearings",
-    "beats": 13,
-    "shorts": 2,
+    "topic": "FIFA Corruption: The Dark Dealings Behind The Qatar World Cup (Documentary)",
+    "beats": 12,
+    "shorts": 1,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 336.3
+    "doc_seconds": 234.3
   },
   "budgets": {
     "youtube": {
