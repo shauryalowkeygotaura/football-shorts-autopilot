@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-10-17T10:09:27Z",
+  "ts": "2026-10-18T10:29:33Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "FIFA Corruption: The Dark Dealings Behind The Qatar World Cu -> 1 doc + 1 shorts",
+  "summary": "How FIFA Corruption Actually Works -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "FIFA Corruption: The Dark Dealings Behind The Qatar World Cup (Documentary)",
-    "beats": 12,
-    "shorts": 1,
+    "topic": "How FIFA Corruption Actually Works",
+    "beats": 13,
+    "shorts": 2,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 234.3
+    "doc_seconds": 376.2
   },
   "budgets": {
     "youtube": {
