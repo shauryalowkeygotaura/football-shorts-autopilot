@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-10-18T10:29:33Z",
+  "ts": "2026-10-19T12:05:55Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "How FIFA Corruption Actually Works -> 1 doc + 2 shorts",
+  "summary": "Most Popular Football Players: Rise & Fall (1960 -> 1 doc + 3 shorts",
   "metrics": {
-    "topic": "How FIFA Corruption Actually Works",
-    "beats": 13,
-    "shorts": 2,
+    "topic": "Most Popular Football Players: Rise & Fall (1960",
+    "beats": 14,
+    "shorts": 3,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 376.2
+    "doc_seconds": 267.5
   },
   "budgets": {
     "youtube": {
