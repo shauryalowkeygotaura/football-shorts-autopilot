@@ -1,22 +1,9 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-10-19T12:05:55Z",
+  "ts": "2026-10-20T10:51:23Z",
   "mode": "cycle",
-  "status": "ok",
-  "summary": "Most Popular Football Players: Rise & Fall (1960 -> 1 doc + 3 shorts",
-  "metrics": {
-    "topic": "Most Popular Football Players: Rise & Fall (1960",
-    "beats": 14,
-    "shorts": 3,
-    "docs": 1,
-    "dry_run": false,
-    "doc_seconds": 267.5
-  },
-  "budgets": {
-    "youtube": {
-      "used": null,
-      "limit": 10000,
-      "note": "1600 units/upload; ~6/day on default quota"
-    }
-  }
+  "status": "error",
+  "summary": "cycle failed: NoAudioReceived: No audio was received. Please verify that your parameters are correct.",
+  "metrics": {},
+  "budgets": {}
 }
