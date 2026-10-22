@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-10-21T11:18:59Z",
+  "ts": "2026-10-22T11:10:57Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "Untold Stories of Messi, Ronaldo, FIFA World Cup & Indian Fo -> 1 doc + 3 shorts",
+  "summary": "How Pel\u00e9 Became the Greatest Footballer of All Time. Pel\u00e9's  -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "Untold Stories of Messi, Ronaldo, FIFA World Cup & Indian Football",
-    "beats": 10,
-    "shorts": 3,
+    "topic": "How Pel\u00e9 Became the Greatest Footballer of All Time. Pel\u00e9's Rise to Glory",
+    "beats": 12,
+    "shorts": 4,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 322.5
+    "doc_seconds": 229.8
   },
   "budgets": {
     "youtube": {
