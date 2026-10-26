@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-10-25T10:42:38Z",
+  "ts": "2026-10-26T13:01:03Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "Most Popular Football Players: Rise & Fall (1960 -> 1 doc + 4 shorts",
+  "summary": "I Survived 31 Days As A Professional Footballer -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "Most Popular Football Players: Rise & Fall (1960",
-    "beats": 14,
+    "topic": "I Survived 31 Days As A Professional Footballer",
+    "beats": 12,
     "shorts": 4,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 223.5
+    "doc_seconds": 279.0
   },
   "budgets": {
     "youtube": {
