@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-10-29T12:22:02Z",
+  "ts": "2026-10-30T12:13:52Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "FIFA\u2019s Nightmare Gets Even Worse As Referee Scandals Rock Th -> 1 doc + 2 shorts",
+  "summary": "How Soccer Match-Fixing Actually Works -> 1 doc + 2 shorts",
   "metrics": {
-    "topic": "FIFA\u2019s Nightmare Gets Even Worse As Referee Scandals Rock The World Cup",
-    "beats": 10,
+    "topic": "How Soccer Match-Fixing Actually Works",
+    "beats": 12,
     "shorts": 2,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 269.7
+    "doc_seconds": 295.4
   },
   "budgets": {
     "youtube": {
