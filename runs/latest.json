@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-10-30T12:13:52Z",
+  "ts": "2026-10-31T11:47:13Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "How Soccer Match-Fixing Actually Works -> 1 doc + 2 shorts",
+  "summary": "How difficult is it to make it as a young professional footb -> 1 doc + 4 shorts",
   "metrics": {
-    "topic": "How Soccer Match-Fixing Actually Works",
-    "beats": 12,
-    "shorts": 2,
+    "topic": "How difficult is it to make it as a young professional footballer?",
+    "beats": 13,
+    "shorts": 4,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 295.4
+    "doc_seconds": 225.7
   },
   "budgets": {
     "youtube": {
