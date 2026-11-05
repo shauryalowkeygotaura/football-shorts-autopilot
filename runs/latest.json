@@ -1,9 +1,22 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-11-04T13:38:38Z",
+  "ts": "2026-11-05T14:08:09Z",
   "mode": "cycle",
-  "status": "error",
-  "summary": "cycle failed: NoAudioReceived: No audio was received. Please verify that your parameters are correct.",
-  "metrics": {},
-  "budgets": {}
+  "status": "ok",
+  "summary": "Every Generation's Greatest Footballer Explained In 7 Minute -> 1 doc + 2 shorts",
+  "metrics": {
+    "topic": "Every Generation's Greatest Footballer Explained In 7 Minutes",
+    "beats": 9,
+    "shorts": 2,
+    "docs": 1,
+    "dry_run": false,
+    "doc_seconds": 371.7
+  },
+  "budgets": {
+    "youtube": {
+      "used": null,
+      "limit": 10000,
+      "note": "1600 units/upload; ~6/day on default quota"
+    }
+  }
 }
