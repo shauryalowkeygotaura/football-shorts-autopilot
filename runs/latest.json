@@ -1,9 +1,22 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-11-06T13:36:06Z",
+  "ts": "2026-11-07T12:22:18Z",
   "mode": "cycle",
-  "status": "error",
-  "summary": "cycle failed: NoAudioReceived: No audio was received. Please verify that your parameters are correct.",
-  "metrics": {},
-  "budgets": {}
+  "status": "ok",
+  "summary": "How FIFA Corruption Actually Works -> 1 doc + 2 shorts",
+  "metrics": {
+    "topic": "How FIFA Corruption Actually Works",
+    "beats": 11,
+    "shorts": 2,
+    "docs": 1,
+    "dry_run": false,
+    "doc_seconds": 119.1
+  },
+  "budgets": {
+    "youtube": {
+      "used": null,
+      "limit": 10000,
+      "note": "1600 units/upload; ~6/day on default quota"
+    }
+  }
 }
