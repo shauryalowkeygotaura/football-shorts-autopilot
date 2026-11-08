@@ -1,16 +1,16 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-11-07T12:22:18Z",
+  "ts": "2026-11-08T12:38:20Z",
   "mode": "cycle",
   "status": "ok",
-  "summary": "How FIFA Corruption Actually Works -> 1 doc + 2 shorts",
+  "summary": "5 Hard Truths Every Footballer Needs to Accept to Go Pro -> 1 doc + 1 shorts",
   "metrics": {
-    "topic": "How FIFA Corruption Actually Works",
-    "beats": 11,
-    "shorts": 2,
+    "topic": "5 Hard Truths Every Footballer Needs to Accept to Go Pro",
+    "beats": 3,
+    "shorts": 1,
     "docs": 1,
     "dry_run": false,
-    "doc_seconds": 119.1
+    "doc_seconds": 29.1
   },
   "budgets": {
     "youtube": {
