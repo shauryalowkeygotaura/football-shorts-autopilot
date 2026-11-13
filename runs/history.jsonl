@@ -164,3 +164,4 @@
 {"pipeline": "football-shorts", "ts": "2026-11-10T14:07:49Z", "mode": "cycle", "status": "error", "summary": "cycle failed: NoAudioReceived: No audio was received. Please verify that your parameters are correct.", "metrics": {}, "budgets": {}}
 {"pipeline": "football-shorts", "ts": "2026-11-11T13:24:43Z", "mode": "cycle", "status": "error", "summary": "cycle failed: NoAudioReceived: No audio was received. Please verify that your parameters are correct.", "metrics": {}, "budgets": {}}
 {"pipeline": "football-shorts", "ts": "2026-11-12T14:29:03Z", "mode": "cycle", "status": "error", "summary": "cycle failed: NoAudioReceived: No audio was received. Please verify that your parameters are correct.", "metrics": {}, "budgets": {}}
+{"pipeline": "football-shorts", "ts": "2026-11-13T13:46:13Z", "mode": "cycle", "status": "error", "summary": "cycle failed: NoAudioReceived: No audio was received. Please verify that your parameters are correct.", "metrics": {}, "budgets": {}}
