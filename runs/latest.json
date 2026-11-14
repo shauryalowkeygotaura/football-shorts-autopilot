@@ -1,9 +1,22 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-11-13T13:46:13Z",
+  "ts": "2026-11-14T12:53:51Z",
   "mode": "cycle",
-  "status": "error",
-  "summary": "cycle failed: NoAudioReceived: No audio was received. Please verify that your parameters are correct.",
-  "metrics": {},
-  "budgets": {}
+  "status": "ok",
+  "summary": "Ikechukwu Uche: The Greatest Nigerian Striker Who Never Play -> 1 doc + 1 shorts",
+  "metrics": {
+    "topic": "Ikechukwu Uche: The Greatest Nigerian Striker Who Never Played at a World Cup",
+    "beats": 3,
+    "shorts": 1,
+    "docs": 1,
+    "dry_run": false,
+    "doc_seconds": 34.7
+  },
+  "budgets": {
+    "youtube": {
+      "used": null,
+      "limit": 10000,
+      "note": "1600 units/upload; ~6/day on default quota"
+    }
+  }
 }
