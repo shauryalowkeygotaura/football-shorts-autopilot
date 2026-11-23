@@ -1,6 +1,6 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-11-22T14:02:36Z",
+  "ts": "2026-11-23T17:07:25Z",
   "mode": "cycle",
   "status": "error",
   "summary": "cycle failed: NoAudioReceived: No audio was received. Please verify that your parameters are correct.",
