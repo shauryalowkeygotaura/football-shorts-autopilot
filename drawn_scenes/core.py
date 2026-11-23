@@ -581,14 +581,16 @@ def _render_papercut(spec: dict, seconds: float, seed: int, L: Layout, sink) -> 
     bg[L.floor:] *= 0.82                          # a darker paper strip along the bottom
     bg[L.floor:L.floor + max(2, int(6 * k))] *= 0.7
     vig = _vignette(L.w, L.h)
-    S = L.icon_size
+    bare = bool(spec.get("notitle"))   # no headline: the icon takes the centre
+    S = int(min(L.w, L.h) * 0.72) if bare else L.icon_size
     tex = _noise(S + int(80 * k), S + int(80 * k), seed + 1, ((5, 1.0), (40, 0.5), (220, 0.3)))
     icon = _paper_icon(spec["icon"], S, tex, k)
-    sign = _paper_sign(spec["word"], L, rng)
+    sign = None if spec.get("notitle") else _paper_sign(spec["word"], L, rng)
     scraps = [(_paper_scrap(rng, tex, k), x, y, float(rng.uniform(0, 6.28)), float(rng.uniform(-25, 25)))
-              for x, y in _scatter(L, rng, 7, 60 * k)]
+              for x, y in _scatter(L, rng, 7, 60 * k)
+              if not (bare and abs(x - L.w / 2) < S / 2 + 40 * k and abs(y - L.h / 2) < S / 2 + 40 * k)]
     tilt = float(rng.uniform(-2.5, 2.5))
-    ix, iy = L.icon
+    ix, iy = (L.w / 2, L.h / 2) if bare else L.icon
     sx, sy = L.sign
     for f in range(max(1, int(round(seconds * FPS)))):
         t = f / FPS
@@ -598,7 +600,8 @@ def _render_papercut(spec: dict, seconds: float, seed: int, L: Layout, sink) -> 
                     _ease_back((t - 0.05) / 0.3), rot + 4 * math.sin(t + ph))
         icon.blit(canvas, ix, iy + 7 * k * math.sin(t * 2 * math.pi / 2.4), _ease_back((t - 0.12) / 0.38),
                   1.4 * math.sin(t * 2 * math.pi / 3.1))
-        sign.blit(canvas, sx, sy, _ease_back(t / 0.32), tilt)
+        if sign is not None:
+            sign.blit(canvas, sx, sy, _ease_back(t / 0.32), tilt)
         canvas *= vig
         sink(canvas)
 
@@ -672,17 +675,18 @@ def _render_sketch(spec: dict, seconds: float, seed: int, L: Layout, sink) -> No
     mx = int(118 * k)
     cv2.line(paper, (mx, 0), (mx, L.h), _bgr("#efb3ad"), max(1, int(2 * k)), cv2.LINE_AA)
     vig = _vignette(L.w, L.h, 0.14)
-    S = L.icon_size
+    bare = bool(spec.get("notitle"))
+    S = int(min(L.w, L.h) * 0.72) if bare else L.icon_size
     icons = [_ink_layer(ICONS[spec["icon"]], S, int(40 * k), np.random.default_rng(seed + 10 + j), 5 * k, 7 * k)
              for j in range(BOIL)]
-    titles = [_sketch_title(spec["word"], L, np.random.default_rng(seed + 20 + j)) for j in range(BOIL)]
+    titles = [] if spec.get("notitle") else         [_sketch_title(spec["word"], L, np.random.default_rng(seed + 20 + j)) for j in range(BOIL)]
     doodles = []
-    for x, y in _scatter(L, rng, 5, 80 * k):
+    for x, y in ([] if bare else _scatter(L, rng, 5, 80 * k)):
         d = DOODLES[int(rng.integers(len(DOODLES)))]
         ds = int(90 * k)
         doodles.append(([_ink_layer(d, ds, int(16 * k), np.random.default_rng(seed + 40 + j + int(x)), 3 * k, 5 * k)
                          for j in range(BOIL)], x, y, float(rng.uniform(-30, 30))))
-    ix, iy = L.icon
+    ix, iy = (L.w / 2, L.h / 2) if bare else L.icon
     sx, sy = L.sign
     for f in range(max(1, int(round(seconds * FPS)))):
         t = f / FPS
@@ -692,15 +696,20 @@ def _render_sketch(spec: dict, seconds: float, seed: int, L: Layout, sink) -> No
             frames[v].blit(canvas, x, y, 1.0, rot, reveal=min(1.0, max(0.0, (t - 0.35) / 0.4)))
         icons[v].blit(canvas, ix, iy, 1.0 + 0.012 * math.sin(t * 2.2), 0.0,
                       reveal=min(1.0, max(0.0, (t - 0.1) / 0.6)))
-        titles[v].blit(canvas, sx, sy, 1.0, -1.5, reveal=min(1.0, t / 0.4))
+        if titles:
+            titles[v].blit(canvas, sx, sy, 1.0, -1.5, reveal=min(1.0, t / 0.4))
         canvas *= vig
         sink(canvas)
 
 
 # ── output ───────────────────────────────────────────────────────────────────
 def _normalise(spec: dict) -> dict:
-    return {"word": clean_word(spec.get("word", "")) or "listen",
-            "icon": spec.get("icon") if spec.get("icon") in ICONS else "spark"}
+    """notitle=True: icon + decor only, for pipelines that lay their own text over the frame."""
+    out = {"word": clean_word(spec.get("word", "")) or "listen",
+           "icon": spec.get("icon") if spec.get("icon") in ICONS else "spark"}
+    if spec.get("notitle"):
+        out["notitle"] = True
+    return out
 
 
 def render(style: str, spec: dict, seconds: float, out_dir: Path, *, size: tuple[int, int] = (1080, 1920),
