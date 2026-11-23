@@ -209,19 +209,36 @@ def fallback_spec(line: str) -> dict:
     return {"word": clean_word(" ".join(keep)) or "listen", "icon": guess_icon(line), "use": None}
 
 
+def _groq_keys() -> list[str]:
+    """The whole pool: GROQ_API_KEYS (comma list) + GROQ_API_KEY + GROQ_API_KEY_2, deduped, in order."""
+    raw = os.environ.get("GROQ_API_KEYS", "").split(",") + [os.environ.get("GROQ_API_KEY", ""),
+                                                             os.environ.get("GROQ_API_KEY_2", "")]
+    out: list[str] = []
+    for k in (x.strip() for x in raw):
+        if k and k not in out:
+            out.append(k)
+    return out
+
+
 def groq_chat(messages: list, max_tokens: int) -> str:
-    """Default client: Groq SDK + GROQ_API_KEY (or the first of GROQ_API_KEYS)."""
+    """Default client: Groq SDK, rotating through the key pool on rate limits / auth errors."""
     from groq import Groq  # noqa: PLC0415
-    key = (os.environ.get("GROQ_API_KEY") or os.environ.get("GROQ_API_KEYS", "").split(",")[0]).strip()
-    if not key:
-        raise RuntimeError("GROQ_API_KEY not set")
-    r = Groq(api_key=key).chat.completions.create(
-        model=os.environ.get("DRAWN_SCENES_MODEL", "openai/gpt-oss-120b"), messages=messages,
-        max_tokens=max_tokens, response_format={"type": "json_object"})
-    content = r.choices[0].message.content
-    if not content:
-        raise RuntimeError("empty LLM reply")
-    return content
+    keys = _groq_keys()
+    if not keys:
+        raise RuntimeError("no GROQ_API_KEY / GROQ_API_KEYS set")
+    last: Exception | None = None
+    for key in keys:
+        try:
+            r = Groq(api_key=key, max_retries=1).chat.completions.create(
+                model=os.environ.get("DRAWN_SCENES_MODEL", "openai/gpt-oss-120b"), messages=messages,
+                max_tokens=max_tokens, response_format={"type": "json_object"})
+            content = r.choices[0].message.content
+            if content:
+                return content
+            last = RuntimeError("empty LLM reply")
+        except Exception as e:  # noqa: BLE001 - 429 / 401 on one key: try the next
+            last = e
+    raise RuntimeError(f"all {len(keys)} Groq keys failed: {str(last)[:120]}")
 
 
 def _decide_rules(stock: str) -> str:
