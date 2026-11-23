@@ -4,7 +4,7 @@ name: Football Shorts Autopilot
 # Daily during the pre-tournament ramp; bump frequency during June-July 2026.
 on:
   schedule:
-    - cron: "0 6 * * *"   # 11:30 IST daily
+    - cron: "0 17 * * *"  # 12:00 ET / 22:30 IST daily: noon-3pm ET is the North-American window (en-US audience)
   workflow_dispatch:
     inputs:
       dry_run:

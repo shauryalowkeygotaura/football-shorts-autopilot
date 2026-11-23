@@ -1,0 +1,1 @@
+Vendored copy of Code/drawn-scenes (MIT; fonts SIL OFL 1.1). Edit there, then run its sync.sh.

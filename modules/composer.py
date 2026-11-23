@@ -15,6 +15,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 import config  # noqa: E402
+import drawn_scenes as ds  # noqa: E402  (vendored, see drawn_scenes/VENDORED.txt)
 from modules import broll, tts, visuals  # noqa: E402
 from modules.scriptwriter import Script  # noqa: E402
 
@@ -74,6 +75,25 @@ def build_doc(script: Script, work_dir: Path) -> DocResult:
     cursor = 0.0
     degraded = 0
 
+    # Which beats get a code-drawn card instead of a photo: one Groq call, judged per line.
+    mode, drawn, specs = config.BROLL_MODE, set(), []
+    if mode != "stock":
+        specs = ds.plan([b.narration for b in script.beats], decide=(mode == "mix"),
+                        video="a 16:9 football documentary that is also cut into vertical shorts",
+                        stock="a real photograph of the named player, club, stadium or match")
+        drawn = set(range(len(specs))) if mode == "drawn" else ds.decide(specs)
+        log.info("backgrounds (%s): drawn beats %s", mode, sorted(drawn))
+    look = ds.choose_style(config.DRAWN_STYLE, script.title_working)
+
+    def draw(i: int, dur: float) -> Path | None:
+        if not specs:
+            return None
+        try:
+            return ds.render(look, specs[i], dur, work_dir / "drawn", size=size, seed=i + 7)
+        except (RuntimeError, ValueError) as e:
+            log.warning("beat %d: drawn card failed: %s", i, e)
+            return None
+
     for i, beat in enumerate(script.beats):
         a = tts.narrate(beat.narration, work_dir / "audio", config.VOICE,
                         config.VOICE_RATE, slug=f"beat{i}")
@@ -81,13 +101,16 @@ def build_doc(script: Script, work_dir: Path) -> DocResult:
 
         still, found = visuals.fetch_still(beat.visual, work_dir / "img" / f"beat{i}.jpg",
                                            size, subject=script.title_working)
-        clip = None
-        if not found:
+        clip = draw(i, dur) if i in drawn else None
+        if clip is None and not found:
             # Commons whiffed: try generic stock b-roll (Pexels) before
             # accepting the blank gradient card. Dry-safe: returns None when
             # PEXELS_API_KEY is unset.
             clip = broll.fetch_clip(beat.visual, work_dir / f"clip{i}.mp4", dur,
                                     size, beat_index=i)
+        if clip is None and not found:
+            # no photo and no stock clip: a drawn card says more than a blank gradient
+            clip = draw(i, dur)
         if clip is None:
             try:
                 clip = visuals.ken_burns_clip(still, work_dir / f"clip{i}.mp4", dur,

@@ -176,6 +176,8 @@ def _wire(monkeypatch, tmp_path, failing: set[int]):
         Path(dest).write_bytes(b"gradient")
         return Path(dest)
 
+    # these tests are about the photo-failure policy: keep drawn cards out of it
+    monkeypatch.setattr(composer.config, "BROLL_MODE", "stock")
     monkeypatch.setattr(composer.tts, "narrate", fake_narrate)
     monkeypatch.setattr(composer.visuals, "fetch_still", fake_fetch_still)
     monkeypatch.setattr(composer.visuals, "ken_burns_clip", fake_ken_burns)
@@ -210,3 +212,23 @@ def test_a_clean_run_reports_nothing(monkeypatch, tmp_path, caplog):
     with caplog.at_level("WARNING"):
         composer.build_doc(_Script(6), tmp_path)
     assert "gradient card" not in " ".join(r.getMessage() for r in caplog.records)
+
+
+def test_mix_draws_the_beats_groq_picks_and_keeps_photos_for_the_rest(monkeypatch, tmp_path):
+    rendered = _wire(monkeypatch, tmp_path, failing=set())
+    monkeypatch.setattr(composer.config, "BROLL_MODE", "mix")
+    monkeypatch.setattr(composer.ds, "plan", lambda lines, **kw: [
+        {"word": "w", "icon": "ball", "use": "drawn" if i in (1, 3) else "stock"} for i in range(len(lines))])
+    drawn_calls = []
+
+    def fake_render(style, spec, dur, out_dir, size, seed):
+        drawn_calls.append(seed - 7)
+        p = Path(out_dir) / f"d{seed}.mp4"
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_bytes(b"drawn")
+        return p
+    monkeypatch.setattr(composer.ds, "render", fake_render)
+    result = composer.build_doc(_Script(5), tmp_path)
+    assert drawn_calls == [1, 3]
+    assert len(rendered) == 3, "the other beats still get their photo"
+    assert len(result.beats) == 5
