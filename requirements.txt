@@ -9,4 +9,4 @@ google-auth-oauthlib>=1.2.0
 APScheduler>=3.10.0
 pytest>=8.0.0
 numpy>=1.26
-opencv-python-headless>=4.9,<5.1   # 5.1 dropped CascadeClassifier (format-engine thumbnail check)
+opencv-python-headless>=4.9,<5   # OpenCV 5 moved CascadeClassifier to contrib (format-engine thumbnail check)
