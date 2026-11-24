@@ -139,6 +139,8 @@ ICONS: dict[str, list] = {
 KEYWORDS = [
     (r"money|price|cost|paid|pay|rupee|dollar|cash|earn|revenue|million|billion|\$|₹|£|€", "coin"),
     (r"goal|match|football|soccer|striker|kick|pitch|keeper", "ball"),
+    (r"nuclear|radioactive|radiation|reactor|plutonium|uranium|fallout|toxic|contamina\w*", "warning"),
+    (r"satellite|orbit|space|spacecraft|astronaut|nasa|soviet space", "rocket"),
     (r"trophy|champion|title|cup|final|won|victory", "trophy"),
     (r"code|bug|build|deploy|repo|github|script|api|server", "code"),
     (r"phone|call|ring|dial", "phone"),
