@@ -1,9 +1,11 @@
 """Code-drawn background scenes that stand in for stock b-roll, at any frame size.
 
-Two looks, ported from the paper-reel and sketch agent skills (no image/video model, no browser):
+Three looks, ported from the paper-reel, sketch and anatomy agent skills (no image/video model, no browser):
   papercut  cut paper on a coloured wall: flat fills, paper grain, soft drop shadows, back-eased pops
   sketch    soft hand-drawn ink on notebook paper: wobbly strokes, offset watercolour fill, lines that
             "boil" (3 jittered redraws cycled at 7.5 fps), drawn on with a wipe
+  anatomy   an isometric bench instrument on a framed dark card: four-tone shading, the icon engraved on a
+            plate, a carriage that slides and drives a dial needle and a live readout (opt-in, not in auto)
 
 A scene = a 1-3 word headline + one icon from ICONS + light decor. Portrait frames stack headline over
 icon (captions and a presenter live in the lower half); landscape frames put them side by side.
@@ -30,8 +32,9 @@ from PIL import Image, ImageDraw, ImageFont
 
 FONTS = Path(__file__).resolve().parent / "fonts"
 FPS = 30
-VERSION = 2            # part of the cache key: bump after changing the look
-STYLES = ("papercut", "sketch")
+VERSION = 3            # part of the cache key: bump after changing the look
+STYLES = ("papercut", "sketch", "anatomy")
+AUTO_STYLES = ("papercut", "sketch")   # 'auto' keeps its old picks; anatomy is opt-in
 
 Chat = Callable[[list, int], str]   # (messages, max_tokens) -> JSON text
 
@@ -325,7 +328,7 @@ def choose_style(style: str, seed_text: str) -> str:
     """'auto' = one look per video (stable for re-renders), never mixed inside a video."""
     if style in STYLES:
         return style
-    return STYLES[int(hashlib.sha1(seed_text.encode("utf-8")).hexdigest(), 16) % len(STYLES)]
+    return AUTO_STYLES[int(hashlib.sha1(seed_text.encode("utf-8")).hexdigest(), 16) % len(AUTO_STYLES)]
 
 
 # ── drawing helpers ──────────────────────────────────────────────────────────
@@ -720,6 +723,165 @@ def _render_sketch(spec: dict, seconds: float, seed: int, L: Layout, sink) -> No
 
 
 # ── output ───────────────────────────────────────────────────────────────────
+# ── anatomy ──────────────────────────────────────────────────────────────────
+# Ported from the anatomy skill's rules (wheresryan22/anatomy, MIT): the idea is a real bench instrument,
+# isometric, four-tone shading (top / left / right / edge), correct painter's order, a framed card with
+# title, hint and a live readout, calm eased motion. One model drives the moving parts AND the number:
+# the carriage position sets the needle angle and the readout, so they can never disagree.
+ANAT = {"bg": "#0e1116", "card": "#151a22", "frame": "#2a3240", "grid": "#1f2733", "text": "#e9edf3",
+        "dim": "#7d8899", "accent": "#ff8a3d", "engrave": "#39404d",
+        "metal": ("#c9d1dc", "#8e99a8", "#5d6778", "#eef2f7"),     # top, left, right, edge
+        "base": ("#3a4352", "#2a313d", "#1f252e", "#56617a"),
+        "cart": ("#ffa45c", "#e07a2e", "#b45a1c", "#ffd2a8")}
+_C30, _S30 = math.cos(math.pi / 6), 0.5
+_SH = 2                                       # cv2 sub-pixel shift bits (coords x4)
+
+
+def _ease_io(u: float) -> float:
+    u = min(1.0, max(0.0, u))
+    return u * u * (3 - 2 * u)
+
+
+def _q(p) -> tuple[int, int]:
+    return int(round(p[0] * 4)), int(round(p[1] * 4))
+
+
+class _Iso:
+    """x runs to the lower right, y to the lower left, z up. Bigger x + y = nearer the viewer."""
+
+    def __init__(self, ox: float, oy: float, s: float):
+        self.ox, self.oy, self.s = ox, oy, s
+
+    def p(self, x, y, z):
+        return (self.ox + (x - y) * _C30 * self.s, self.oy + (x + y) * _S30 * self.s - z * self.s)
+
+    def box(self, img, x, y, z, dx, dy, dz, tones):
+        P = self.p
+        top = [P(x, y, z + dz), P(x + dx, y, z + dz), P(x + dx, y + dy, z + dz), P(x, y + dy, z + dz)]
+        left = [P(x, y + dy, z), P(x + dx, y + dy, z), P(x + dx, y + dy, z + dz), P(x, y + dy, z + dz)]
+        right = [P(x + dx, y, z), P(x + dx, y + dy, z), P(x + dx, y + dy, z + dz), P(x + dx, y, z + dz)]
+        for face, tone in ((right, tones[2]), (left, tones[1]), (top, tones[0])):
+            cv2.fillPoly(img, [np.array([_q(v) for v in face], np.int32)], _bgr(tone), cv2.LINE_AA, _SH)
+        lw = max(1, int(round(self.s * 0.035)))
+        for a, b in ((top[0], top[1]), (top[3], top[0]), (top[1], top[2]), (top[2], top[3])):
+            cv2.line(img, _q(a), _q(b), _bgr(tones[3]), lw, cv2.LINE_AA, _SH)
+
+
+def _anat_text(img: np.ndarray, text: str, font, x: float, y: float, color: str, anchor: str = "c",
+               alpha: float = 1.0) -> None:
+    m = _text_mask(text, font, pad=4) * alpha
+    h, w = m.shape
+    x0 = int(x - w / 2) if anchor == "c" else int(x)
+    y0 = int(y - h / 2)
+    H, W = img.shape[:2]
+    if x0 < 0 or y0 < 0 or x0 + w > W or y0 + h > H:
+        return
+    roi = img[y0:y0 + h, x0:x0 + w].astype(np.float32)
+    col = np.asarray(_bgr(color), np.float32)
+    img[y0:y0 + h, x0:x0 + w] = (roi * (1 - m[..., None]) + col * m[..., None]).astype(np.uint8)
+
+
+def _render_anatomy(spec: dict, seconds: float, seed: int, L: Layout, sink) -> None:
+    rng = np.random.default_rng(seed)
+    k = L.k
+    img = np.zeros((L.h, L.w, 3), np.uint8)
+    img[:] = _bgr(ANAT["bg"])
+    m = int(36 * k)                                   # the framed card
+    cv2.rectangle(img, (m, m), (L.w - m, L.h - m), _bgr(ANAT["card"]), -1)
+    step = int(54 * k)
+    for gx in range(m + step, L.w - m, step):        # engineer's dot grid
+        for gy in range(m + step, L.h - m, step):
+            cv2.circle(img, (gx, gy), max(1, int(2 * k)), _bgr(ANAT["grid"]), -1, cv2.LINE_AA)
+    cv2.rectangle(img, (m, m), (L.w - m, L.h - m), _bgr(ANAT["frame"]), max(2, int(3 * k)), cv2.LINE_AA)
+
+    bare = bool(spec.get("notitle"))
+    # fit the whole bench (base corners + dial disc) into the hero box, then centre it there
+    if bare:
+        bx, by, bw, bh = L.w / 2, L.h * 0.45, L.w * 0.84, L.h * 0.6
+    elif L.portrait:
+        bx, by, bw, bh = L.w / 2, L.icon[1] + 0.06 * L.h, L.w * 0.86, L.h * 0.4
+    else:
+        bx, by, bw, bh = L.w * 0.73, L.h * 0.54, L.w * 0.44, L.h * 0.74
+    unit = _Iso(0, 0, 1)
+    pts = [unit.p(x, y, z) for x in (0, 10) for y in (0, 6) for z in (0, 1.35)]
+    dx_, dy_ = unit.p(8.55, 1.05, 6.3)
+    pts += [(dx_ - 1.7, dy_ - 1.7), (dx_ + 1.7, dy_ + 1.7)]
+    xs, ys = [q[0] for q in pts], [q[1] for q in pts]
+    s = min(bw / (max(xs) - min(xs)), bh / (max(ys) - min(ys)))
+    iso = _Iso(bx - s * (max(xs) + min(xs)) / 2, by - s * (max(ys) + min(ys)) / 2, s)
+
+    # static instrument, painter's order: feet, base, icon plate, ruler + rail, gauge post, dial
+    for fx, fy in ((0.4, 0.4), (8.9, 0.4), (0.4, 5.0), (8.9, 5.0)):
+        iso.box(img, fx, fy, 0, 0.7, 0.6, 0.45, ANAT["base"])
+    iso.box(img, 0, 0, 0.45, 10, 6, 0.9, ANAT["base"])
+    px0, py0, pw, ph = 0.6, 0.5, 4.6, 2.9
+    iso.box(img, px0, py0, 1.35, pw, ph, 0.12, ANAT["metal"])
+    # the icon printed on the plate, layer by layer in its own roles (light parts cut back to bare metal)
+    S = 320
+    ink = {"light": ANAT["metal"][0], "dark": ANAT["engrave"], "ink": ANAT["engrave"], "accent": ANAT["accent"],
+           "main": ANAT["accent"], "red": "#d2453a", "green": "#2f9e5b"}
+    prgb = np.zeros((S, S, 3), np.float32)
+    pa = np.zeros((S, S), np.float32)
+    for prim in ICONS[spec["icon"]]:
+        closed, pts, width, role = _to_px(prim, S)
+        mk = _mask(closed, pts, width, (S, S))
+        prgb = prgb * (1 - mk[..., None]) + np.asarray(_bgr(ink.get(role, ANAT["engrave"])), np.float32) * mk[..., None]
+        pa = np.maximum(pa, mk)
+    side = min(pw, ph) * 0.86
+    ux, uy = px0 + (pw - side) / 2, py0 + (ph - side) / 2
+    a, b, c = iso.p(ux, uy, 1.47), iso.p(ux + side, uy, 1.47), iso.p(ux, uy + side, 1.47)
+    M = cv2.getAffineTransform(np.float32([[0, 0], [S, 0], [0, S]]), np.float32([a, b, c]))
+    wa = cv2.warpAffine(pa, M, (L.w, L.h), flags=cv2.INTER_LINEAR)[..., None]
+    wrgb = cv2.warpAffine(prgb, M, (L.w, L.h), flags=cv2.INTER_LINEAR)
+    img[:] = (img * (1 - wa) + wrgb * wa).astype(np.uint8)
+    iso.box(img, 0.5, 3.95, 1.35, 9.0, 0.5, 0.3, ANAT["metal"])            # rail
+    for i in range(19):                                                     # tick ruler in front of it
+        tx = 0.7 + i * 0.47
+        h_ = 0.55 if i % 2 == 0 else 0.3
+        cv2.line(img, _q(iso.p(tx, 4.75, 1.36)), _q(iso.p(tx, 4.75 + h_, 1.36)), _bgr(ANAT["dim"]),
+                 max(1, int(2 * k)), cv2.LINE_AA, _SH)
+    iso.box(img, 8.2, 0.7, 1.35, 0.7, 0.7, 3.6, ANAT["metal"])             # gauge post (back right)
+    dcx, dcy = iso.p(8.55, 1.05, 6.3)
+    R = 1.55 * s
+    cv2.circle(img, (int(dcx + 0.14 * s), int(dcy + 0.14 * s)), int(R), _bgr("#07090c"), -1, cv2.LINE_AA)
+    cv2.circle(img, (int(dcx), int(dcy)), int(R), _bgr(ANAT["metal"][2]), -1, cv2.LINE_AA)
+    cv2.circle(img, (int(dcx), int(dcy)), int(R * 0.88), _bgr("#f3f5f8"), -1, cv2.LINE_AA)
+    for i in range(41):                                                     # 270 degree dial
+        ang = math.radians(225 - i * 270 / 40)
+        r0 = R * (0.66 if i % 5 == 0 else 0.75)
+        p0 = (int(dcx + r0 * math.cos(ang)), int(dcy - r0 * math.sin(ang)))
+        p1 = (int(dcx + R * 0.82 * math.cos(ang)), int(dcy - R * 0.82 * math.sin(ang)))
+        cv2.line(img, p0, p1, _bgr("#2b3240"), max(1, int((4 if i % 5 == 0 else 2) * k)), cv2.LINE_AA)
+
+    word = spec["word"].upper()
+    title_f = _fit_font(word, "ArchivoBlack-Regular.ttf", L.title_max, int(120 * k))
+    small = _font("ArchivoBlack-Regular.ttf", max(18, int(30 * k)))
+    num_f = _font("ArchivoBlack-Regular.ttf", max(22, int(50 * k)))
+    fig = f"FIG. {int(rng.integers(1, 9)):02d}"
+    static = img
+    target = float(rng.uniform(0.62, 0.9))
+    sx, sy = L.sign
+    for f in range(max(1, int(round(seconds * FPS)))):
+        t = f / FPS
+        u = target * _ease_io((t - 0.15) / 1.3) + (0.015 * math.sin((t - 1.45) * 2.1) if t > 1.45 else 0.0)
+        canvas = static.copy()
+        iso.box(canvas, 0.7 + u * 7.0, 3.8, 1.65, 1.5, 0.8, 0.95, ANAT["cart"])   # the carriage = the model
+        ang = math.radians(225 - u * 270)
+        tip = (dcx + R * 0.8 * math.cos(ang), dcy - R * 0.8 * math.sin(ang))
+        cv2.line(canvas, _q((dcx, dcy)), _q(tip), _bgr(ANAT["accent"]), max(2, int(6 * k)), cv2.LINE_AA, _SH)
+        cv2.circle(canvas, (int(dcx), int(dcy)), max(3, int(11 * k)), _bgr("#2b3240"), -1, cv2.LINE_AA)
+        if not bare:
+            fade = _ease_io(t / 0.45)
+            if fade > 0.02:
+                _anat_text(canvas, fig, small, sx, sy - 100 * k, ANAT["accent"], alpha=fade)
+                _anat_text(canvas, word, title_f, sx, sy + (1 - fade) * 30 * k, ANAT["text"], alpha=fade)
+        _anat_text(canvas, f"READ {u * 100:05.1f}", num_f, m + 40 * k, m + 70 * k, ANAT["accent"], anchor="l")
+        sink(canvas.astype(np.float32))
+
+
+_RENDERERS = {"papercut": _render_papercut, "sketch": _render_sketch, "anatomy": _render_anatomy}
+
+
 def _normalise(spec: dict) -> dict:
     """notitle=True: icon + decor only, for pipelines that lay their own text over the frame."""
     out = {"word": clean_word(spec.get("word", "")) or "listen",
@@ -755,7 +917,7 @@ def render(style: str, spec: dict, seconds: float, out_dir: Path, *, size: tuple
         proc.stdin.write(np.clip(canvas, 0, 255).astype(np.uint8).tobytes())
 
     try:
-        (_render_sketch if style == "sketch" else _render_papercut)(spec, seconds, int(seed), Layout(w, h), sink)
+        _RENDERERS[style](spec, seconds, int(seed), Layout(w, h), sink)
         proc.stdin.close()
         err = proc.stderr.read().decode(errors="replace")
         if proc.wait() != 0:
@@ -781,6 +943,6 @@ def still(style: str, spec: dict, out: Path, *, size: tuple[int, int] = (1080, 1
         if count[0] == target:
             got.append(np.clip(canvas, 0, 255).astype(np.uint8))
         count[0] += 1
-    (_render_sketch if style == "sketch" else _render_papercut)(_normalise(spec), at + 1 / FPS, seed, Layout(w, h), sink)
+    _RENDERERS[style if style in STYLES else "papercut"](_normalise(spec), at + 1 / FPS, seed, Layout(w, h), sink)
     cv2.imwrite(str(out), got[0])
     return out

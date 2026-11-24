@@ -39,7 +39,7 @@ SHORT_RESOLUTION = (1080, 1920)   # 9:16 vertical short
 #           (numbers, verdicts, punchlines); beats with no photo get a drawn card, not a blank gradient
 #   stock = photos/Pexels only (old behaviour)    drawn = every beat drawn
 BROLL_MODE = os.environ.get("BROLL_MODE", "mix") if os.environ.get("BROLL_MODE", "mix") in ("mix", "stock", "drawn") else "mix"
-DRAWN_STYLE = os.environ.get("DRAWN_STYLE", "auto") if os.environ.get("DRAWN_STYLE", "auto") in ("auto", "papercut", "sketch") else "auto"
+DRAWN_STYLE = os.environ.get("DRAWN_STYLE", "auto") if os.environ.get("DRAWN_STYLE", "auto") in ("auto", "papercut", "sketch", "anatomy") else "auto"
 DOC_TARGET_SEC = (300, 600)       # 5-10 min long-form
 SHORT_TARGET_SEC = (25, 55)       # shorts sweet spot
 SHORTS_PER_DOC = 4                # auto-slice N shorts from each doc
