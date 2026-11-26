@@ -1,22 +1,9 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-11-25T01:30:20Z",
+  "ts": "2026-11-26T00:56:53Z",
   "mode": "cycle",
-  "status": "ok",
-  "summary": "What It's REALLY Like to Be a League Two Footballer -> 1 doc + 0 shorts",
-  "metrics": {
-    "topic": "What It's REALLY Like to Be a League Two Footballer",
-    "beats": 11,
-    "shorts": 0,
-    "docs": 1,
-    "dry_run": false,
-    "doc_seconds": 174.4
-  },
-  "budgets": {
-    "youtube": {
-      "used": null,
-      "limit": 10000,
-      "note": "1600 units/upload; ~6/day on default quota"
-    }
-  }
+  "status": "error",
+  "summary": "cycle failed: NoAudioReceived: No audio was received. Please verify that your parameters are correct.",
+  "metrics": {},
+  "budgets": {}
 }
