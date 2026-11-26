@@ -32,7 +32,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 FONTS = Path(__file__).resolve().parent / "fonts"
 FPS = 30
-VERSION = 3            # part of the cache key: bump after changing the look
+VERSION = 4            # part of the cache key: bump after changing the look
 STYLES = ("papercut", "sketch", "anatomy")
 AUTO_STYLES = ("papercut", "sketch")   # 'auto' keeps its old picks; anatomy is opt-in
 
@@ -524,6 +524,50 @@ def _ease_back(u: float, s: float = 1.9) -> float:
     return u * u * ((s + 1) * u + s) + 1
 
 
+# ── motion: EASE_PRO curves + camera, from the zahran-ui-motion skill ─────────
+def _bezier(x1: float, y1: float, x2: float, y2: float):
+    """CSS-style cubic-bezier(x1, y1, x2, y2) as f(u) -> eased value, u clamped to [0, 1]."""
+    def f(u: float) -> float:
+        u = min(1.0, max(0.0, u))
+        lo, hi = 0.0, 1.0
+        for _ in range(22):                       # bisection on x(t) = u
+            t = (lo + hi) / 2
+            x = 3 * (1 - t) ** 2 * t * x1 + 3 * (1 - t) * t * t * x2 + t ** 3
+            lo, hi = (t, hi) if x < u else (lo, t)
+        t = (lo + hi) / 2
+        return 3 * (1 - t) ** 2 * t * y1 + 3 * (1 - t) * t * t * y2 + t ** 3
+    return f
+
+
+EASE_MOVE = _bezier(.85, 0, .15, 1)      # camera / transfers, 24-40 f
+EASE_ENTER = _bezier(.5, 0, 0, 1)        # big arrivals, 18-30 f
+EASE_SNAP = _bezier(.16, 1, .3, 1)       # small UI and words, 8-18 f
+EASE_EXIT = _bezier(.7, 0, .84, 0)       # leaves at peak speed into the cut, 8-16 f
+
+
+def _camera(sink, n: int, L: Layout, seed: int):
+    """'The camera never stops': a slow push + sideways drift over the whole clip, then an EXIT-eased
+    zoom-through over the last ~12 frames so the cut never lands on a still frame."""
+    n = max(1, n)
+    exit_n = min(12, max(4, n // 4))
+    drift = (1 if seed % 2 else -1) * L.w * 0.008
+    count = [0]
+
+    def wrapped(canvas: np.ndarray) -> None:
+        f = count[0]
+        count[0] += 1
+        u = f / max(1, n - 1)
+        scale = 1.0 + 0.035 * u                                   # constant-speed push
+        e = (f - (n - exit_n)) / exit_n
+        if e > 0:
+            scale += 0.11 * EASE_EXIT(e)                         # zoom-through into the cut
+        dx = drift * EASE_MOVE(u)
+        cx, cy = L.w / 2, L.h * 0.45
+        M = np.float32([[scale, 0, (1 - scale) * cx + dx], [0, scale, (1 - scale) * cy]])
+        sink(cv2.warpAffine(canvas, M, (L.w, L.h), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT))
+    return wrapped
+
+
 def _scatter(L: Layout, rng: np.random.Generator, n: int, margin: float):
     pts = []
     for _ in range(n * 6):
@@ -617,10 +661,10 @@ def _render_papercut(spec: dict, seconds: float, seed: int, L: Layout, sink) -> 
     for f in range(max(1, int(round(seconds * FPS)))):
         t = f / FPS
         canvas = bg.copy()
-        for sp, x, y, ph, rot in scraps:
+        for j, (sp, x, y, ph, rot) in enumerate(scraps):       # children lag 3 f each
             sp.blit(canvas, x + 6 * k * math.sin(t * 1.3 + ph), y + 9 * k * math.sin(t * 0.9 + ph),
-                    _ease_back((t - 0.05) / 0.3), rot + 4 * math.sin(t + ph))
-        icon.blit(canvas, ix, iy + 7 * k * math.sin(t * 2 * math.pi / 2.4), _ease_back((t - 0.12) / 0.38),
+                    _ease_back((t - 0.2 - 0.1 * j) / 0.3), rot + 4 * math.sin(t + ph))
+        icon.blit(canvas, ix, iy + 7 * k * math.sin(t * 2 * math.pi / 2.4), _ease_back((t - 0.1) / 0.38),
                   1.4 * math.sin(t * 2 * math.pi / 3.1))
         if sign is not None:
             sign.blit(canvas, sx, sy, _ease_back(t / 0.32), tilt)
@@ -714,12 +758,12 @@ def _render_sketch(spec: dict, seconds: float, seed: int, L: Layout, sink) -> No
         t = f / FPS
         v = (f // BOIL_EVERY) % BOIL
         canvas = paper.copy()
-        for frames, x, y, rot in doodles:
-            frames[v].blit(canvas, x, y, 1.0, rot, reveal=min(1.0, max(0.0, (t - 0.35) / 0.4)))
+        for j, (frames, x, y, rot) in enumerate(doodles):
+            frames[v].blit(canvas, x, y, 1.0, rot, reveal=EASE_SNAP((t - 0.35 - 0.1 * j) / 0.4))
         icons[v].blit(canvas, ix, iy, 1.0 + 0.012 * math.sin(t * 2.2), 0.0,
-                      reveal=min(1.0, max(0.0, (t - 0.1) / 0.6)))
+                      reveal=EASE_ENTER((t - 0.1) / 0.7))
         if titles:
-            titles[v].blit(canvas, sx, sy, 1.0, -1.5, reveal=min(1.0, t / 0.4))
+            titles[v].blit(canvas, sx, sy, 1.0, -1.5, reveal=EASE_SNAP(t / 0.45))
         canvas *= vig
         sink(canvas)
 
@@ -919,7 +963,8 @@ def render(style: str, spec: dict, seconds: float, out_dir: Path, *, size: tuple
         proc.stdin.write(np.clip(canvas, 0, 255).astype(np.uint8).tobytes())
 
     try:
-        _RENDERERS[style](spec, seconds, int(seed), Layout(w, h), sink)
+        L = Layout(w, h)
+        _RENDERERS[style](spec, seconds, int(seed), L, _camera(sink, int(round(seconds * FPS)), L, int(seed)))
         proc.stdin.close()
         err = proc.stderr.read().decode(errors="replace")
         if proc.wait() != 0:
@@ -945,6 +990,8 @@ def still(style: str, spec: dict, out: Path, *, size: tuple[int, int] = (1080, 1
         if count[0] == target:
             got.append(np.clip(canvas, 0, 255).astype(np.uint8))
         count[0] += 1
-    _RENDERERS[style if style in STYLES else "papercut"](_normalise(spec), at + 1 / FPS, seed, Layout(w, h), sink)
+    L = Layout(w, h)   # camera as if the clip ran 2x `at` (no exit zoom on a still)
+    _RENDERERS[style if style in STYLES else "papercut"](_normalise(spec), at + 1 / FPS, seed, L,
+                                                         _camera(sink, 2 * target + 2, L, seed))
     cv2.imwrite(str(out), got[0])
     return out
