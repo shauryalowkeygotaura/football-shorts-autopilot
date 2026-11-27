@@ -44,11 +44,11 @@ DOC_TARGET_SEC = (300, 600)       # 5-10 min long-form
 SHORT_TARGET_SEC = (25, 55)       # shorts sweet spot
 SHORTS_PER_DOC = 4                # auto-slice N shorts from each doc
 
-# ── Voice (edge-tts, free) ────────────────────────────────────────────────────
+# ── Voice (Groq Orpheus via paralang) ────────────────────────────────────────────────────
 # Authoritative documentary narrator. en-US for the high-RPM North-American
 # audience the tournament unlocks.
-VOICE = "en-US-AndrewMultilingualNeural"
-VOICE_RATE = "+6%"   # docs read slightly brisk; shorts inherit then get punchier
+VOICE = "daniel"   # Orpheus male: autumn/diana/hannah/austin/daniel/troy
+VOICE_RATE = "+0%"   # unused by Orpheus (no speed control); kept for the narrate() signature
 
 # ── LLM (Groq, free tier — per standing project rule, never Anthropic) ─────────
 GROQ_MODEL = "qwen/qwen3.8-27b"
