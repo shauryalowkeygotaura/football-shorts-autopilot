@@ -137,7 +137,7 @@ def build_doc(script: Script, work_dir: Path) -> DocResult:
         _mux_beat(clip, a.audio_path, muxed)
         beat_parts.append(muxed)
 
-        # edge-tts returns timings local to THIS beat (0-based). Shift them by
+        # Orpheus TTS returns timings local to THIS beat (0-based). Shift them by
         # the beat's doc offset so the shorts slicer can filter on the doc
         # timeline; otherwise every beat's words cluster near 0s and only the
         # first short ever gets captions.

@@ -3,7 +3,7 @@
 
 Polls a free football data API (football-data.org v4) for live matches, detects
 a goal the moment a score increments, and triggers the SAME free render chain
-the daily pipeline already uses (Groq script -> edge-tts narration -> Wikimedia
+the daily pipeline already uses (Groq script -> Orpheus TTS narration -> Wikimedia
 Commons stills -> Ken-Burns -> FFmpeg vertical short with burned captions ->
 metadata -> uploader) to stage a "GOAL: X scores" short within minutes.
 
@@ -355,7 +355,7 @@ def _fallback_goal_script(event: GoalEvent) -> Script:
 def produce_goal_short(event: GoalEvent, work_root: Path | None = None) -> dict:
     """Render ONE stills+caption vertical short for a goal and (dry) publish it.
 
-    Reuses the existing chain end to end: Groq script -> edge-tts -> Commons
+    Reuses the existing chain end to end: Groq script -> Orpheus TTS -> Commons
     stills -> Ken-Burns -> FFmpeg vertical short with captions -> Groq metadata
     -> uploader. Posting is dry unless LIVE_MONITOR_AUTOPOST=1 AND real creds.
     Returns a result dict; raises only on a genuine render failure.
