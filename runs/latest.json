@@ -1,9 +1,9 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-11-27T01:00:10Z",
+  "ts": "2026-11-27T08:58:51Z",
   "mode": "cycle",
   "status": "error",
-  "summary": "cycle failed: NoAudioReceived: No audio was received. Please verify that your parameters are correct.",
+  "summary": "cycle failed: RateLimited: all Groq keys rate-limited (429)",
   "metrics": {},
   "budgets": {}
 }
