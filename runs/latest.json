@@ -1,6 +1,6 @@
 {
   "pipeline": "football-shorts",
-  "ts": "2026-11-27T08:58:51Z",
+  "ts": "2026-11-28T00:30:29Z",
   "mode": "cycle",
   "status": "error",
   "summary": "cycle failed: RateLimited: all Groq keys rate-limited (429)",
